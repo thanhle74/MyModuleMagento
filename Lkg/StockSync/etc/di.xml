@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="PlanFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="StockSyncFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Lkg\StockSync\Model\ResourceModel\StockSync\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">StockSyncFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Lkg\StockSync\Model\ResourceModel\StockSync\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lkg_stock_sync</argument>
+            <argument name="eventPrefix" xsi:type="string">stock_sync_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">stock_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Lkg\StockSync\Model\ResourceModel\StockSync</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="stock_sync_listing_data_source" xsi:type="string">Lkg\StockSync\Model\ResourceModel\StockSync\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Lkg\StockSync\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Lkg\StockSync\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">LkgStockSyncLogHandler</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Lkg\StockSync\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Lkg\StockSync\Api\StockSyncRepositoryInterface" type="Lkg\StockSync\Model\StockSyncRepository"/>
+    <preference for="Lkg\StockSync\Api\Data\StockSyncInterface" type="Lkg\StockSync\Model\StockSync"/>
+</config>

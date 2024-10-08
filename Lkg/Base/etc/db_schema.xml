@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="cron_history" resource="default" engine="innodb" comment="Cron History Table">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="job_code" nullable="false" length="255" comment="Cron Job Code"/>
+        <column xsi:type="timestamp" name="executed_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Execution Time"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="7" default="pending" comment="Status"/>
+        <column xsi:type="varchar" name="publisher_id" nullable="false" length="255" comment="Publisher Id"/>
+        <column xsi:type="varchar" name="message" nullable="true" length="255" comment="Execution Message"/>
+        <column xsi:type="longtext" name="request" nullable="true" comment="Request Data"/>
+        <column xsi:type="longtext" name="response" nullable="true" comment="Response Data"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <lkg_general>
+            <stocksync>
+                <status_module>0</status_module>
+                <wsdl_url>https://soaptest.lkg.eu/axis2/services/vas.Artikel?wsdl</wsdl_url>
+                <soap_target>EVA1</soap_target>
+                <publisher_id>25800</publisher_id>
+                <cleanup_time_threshold>72</cleanup_time_threshold>
+                <cron_expression>*/5 * * * *</cron_expression>
+            </stocksync>
+        </lkg_general>
+    </default>
+</config>

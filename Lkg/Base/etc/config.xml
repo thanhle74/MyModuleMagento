@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <lkg_general>
+            <config_general>
+                <soap_user>eva</soap_user>
+                <soap_pass>ohLae4yiyoo6xein</soap_pass>
+                <status_history_cron>0</status_history_cron>
+            </config_general>
+        </lkg_general>
+    </default>
+</config>

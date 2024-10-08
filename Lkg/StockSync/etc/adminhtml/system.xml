@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="lkg" translate="label" sortOrder="300">
+            <label>LKG</label>
+        </tab>
+        <section id="lkg_general" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Stock Sync</label>
+            <tab>lkg</tab>
+            <resource>Lkg_StockSync::config</resource>
+            <group id="stocksync" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Stock Sync</label>
+                <field id="status_module" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="wsdl_url" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>WSDL URL</label>
+                </field>
+                <field id="soap_target" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>SOAP TARGET</label>
+                </field>
+                <field id="publisher_id" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>PUBLISHER ID</label>
+                    <comment>Example: 25800, 25801, 25803 ...</comment>
+                </field>
+                <field id="cleanup_time_threshold" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cleanup Time Threshold (in hours)</label>
+                    <comment>Enter the number of hours. Records older than this will be deleted.</comment>
+                </field>
+                <field id="cron_expression" showInDefault="1" showInStore="0" showInWebsite="0" sortOrder="40" translate="label comment" type="select" canRestore="1">
+                    <label><![CDATA[Execution Schedule]]></label>
+                    <options>
+                        <option label="Every minute">* * * * *</option>
+                        <option label="Every 5 minutes">*/5 * * * *</option>
+                        <option label="Every 15 minutes">*/15 * * * *</option>
+                        <option label="Every 30 minutes">*/30 * * * *</option>
+                        <option label="Every hour">0 * * * *</option>
+                    </options>
+                    <depends>
+                        <field id="status_module">1</field>
+                    </depends>
+                </field>
+                <field id="build_indexes" translate="label comment tooltip" type="button" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label></label>
+                    <frontend_model>Lkg\StockSync\Block\System\Config\Button</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

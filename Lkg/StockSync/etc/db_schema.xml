@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="lkg_stock_sync" resource="default" engine="innodb" comment="Stock Sync Table">
+        <column xsi:type="int" name="sync_id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="publisher_id" nullable="false" length="255" comment="Publisher Id"/>
+        <column xsi:type="varchar" name="article_number" nullable="false" length="255" comment="Article Number"/>
+        <column xsi:type="int" name="stock_available" nullable="false" />
+        <column xsi:type="int" name="stock" nullable="false" />
+        <column xsi:type="int" name="dated_with_reservation" nullable="false"/>
+        <column xsi:type="int" name="sync_status" nullable="false"/>
+        <column xsi:type="varchar" name="message" nullable="true" length="255" comment="Message"/>
+        <column name="created" xsi:type="timestamp" nullable="false"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="sync_id"/>
+        </constraint>
+    </table>
+</schema>

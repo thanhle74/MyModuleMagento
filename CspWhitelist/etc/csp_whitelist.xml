@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="font-src">
+        </policy>
+        <policy id="style-src">
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="eva_script" type="host">*.eva-leipzig.de</value>
+                <value id="self" type="host">self</value>
+                <value id="data" type="host">data:</value>
+                <value id="blob" type="host">blob:</value>
+                <value id="eva_delivery" type="host">*.delivery.consentmanager.net</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="mailjet_form_frame" type="host">04p7g.mjt.lu</value>
+            </values>
+        </policy>
+        <policy id="script-src">
+            <values>
+                <value id="eva_script" type="host">*.eva-leipzig.de</value>
+                <value id="mailjet_form_script" type="host">app.mailjet.com</value>
+                <value id="eva_script" type="host">cdn.consentmanager.net</value>
+                <value id="eva_script" type="host">*.delivery.consentmanager.net</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

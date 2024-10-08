@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="lkg_invoice_sync" resource="default" engine="innodb" comment="Invoice SYNC">
+        <column xsi:type="int" name="sync_id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="int" name="sync_order_id" nullable="false" comment="Sync Order Id"/>
+        <column xsi:type="varchar" name="increment_id" nullable="false" length="255" comment="Increment id"/>
+        <column xsi:type="varchar" name="invoice_increment_id" nullable="false" length="255" comment="Invoice Increment Id"/>
+        <column xsi:type="varchar" name="invoice_id" nullable="false" length="255" comment="Invoice Id"/>
+        <column xsi:type="int" name="payment_amount" nullable="false" comment="Payment Amount"/>
+        <column xsi:type="int" name="purchase_order_number" nullable="false" comment="Purchase Order Number"/>
+        <column xsi:type="varchar" name="customer_name" nullable="false" length="255" comment="Customer Name"/>
+        <column xsi:type="text" name="request" nullable="true" comment="Request"/>
+        <column xsi:type="text" name="response" nullable="true" comment="Response"/>
+        <column xsi:type="varchar" name="sync_status" nullable="false" comment="Status"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="sync_id"/>
+        </constraint>
+        <index referenceId="LKG_INVOICE_SYNC_FULLTEXT" indexType="fulltext">
+            <column name="customer_name"/>
+            <column name="sync_status"/>
+            <column name="request"/>
+            <column name="response"/>
+        </index>
+    </table>
+</schema>
+

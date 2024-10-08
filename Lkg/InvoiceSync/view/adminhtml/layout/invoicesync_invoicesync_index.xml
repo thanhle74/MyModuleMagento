@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author ICT
+ * @copyright Copyright (c) 2024 Juni.com
+ * @package A Magento 2 Invoice SYNC To LKG System Module.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="invoice_sync_listing"/>
+        </referenceContainer>
+    </body>
+</page>

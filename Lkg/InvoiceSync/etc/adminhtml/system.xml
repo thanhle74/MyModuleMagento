@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="lkg" translate="label" sortOrder="300">
+            <label>LKG Invoice Sync</label>
+        </tab>
+        <section id="invoicesync" translate="label" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Invoice SYNC</label>
+            <tab>lkg</tab>
+            <resource>Lkg_InvoiceSync::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>LKG Sync Configuration</label>
+                <field id="wsdl_url" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>WSDL URL</label>
+                    <comment>Add your WSDL Url</comment>
+                </field>
+
+                <field id="soap_user" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>SOAP USER</label>
+                    <comment>Add your User Name</comment>
+                </field>
+
+                <field id="soap_pass" type="password" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>SOAP PASS</label>
+                    <comment>Add your password</comment>
+                </field>
+
+                <field id="soap_target" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>SOAP TARGET</label>
+                    <comment>Add your target name</comment>
+                </field>
+
+                <field id="publisher_id" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>PUBLISHER ID</label>
+                    <comment>Add your publisher ID</comment>
+                </field>
+
+                <field id="order_source" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>ORDER SOURCE</label>
+                    <comment>Add your order source</comment>
+                </field>
+
+                <field id="stock_reserve" type="text" translate="label comment" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>STOCK RESERVE</label>
+                    <comment>Add your stock reserve</comment>
+                </field>
+            </group>
+        </section>
+
+    </system>
+</config>

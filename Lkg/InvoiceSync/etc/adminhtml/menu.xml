@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Lkg_InvoiceSync::view" title="LKG" module="Lkg_InvoiceSync" sortOrder="50" resource="Lkg_InvoiceSync::view"/>
+        <add id="Lkg_InvoiceSync::invoicesync" title="Invoice Sync" module="Lkg_InvoiceSync" sortOrder="20" parent="Lkg_InvoiceSync::view" action="invoicesync/invoicesync/index" resource="Lkg_InvoiceSync::invoicesync"/>
+        <add id="Lkg_InvoiceSync::config" title="Configurations" translate="title" module="Lkg_InvoiceSync" sortOrder="50" parent="Lkg_InvoiceSync::view" action="adminhtml/system_config/edit/section/invoicesync" resource="Lkg_InvoiceSync::config"/> 
+    </menu>
+</config>

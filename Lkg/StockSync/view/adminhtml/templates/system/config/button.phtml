@@ -1,0 +1,32 @@
+<script>
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+            $('.stock_sync_note').hide();
+
+            function stockSync() {
+                $.ajax({
+                    url: '<?= $block->getAjaxUrl() ?>',
+                    type: 'POST',
+                    data: {form_key: window.FORM_KEY},
+                    dataType: 'json',
+                    showLoader: true,
+                }).done(function (data) {
+                    if (data.success) {
+                        $('.stock_sync_note').show();
+                        //$('body').trigger('processStop');
+                        return true;
+                    }
+                })
+            }
+
+            $('#stock_sync_button').click(function ()
+            {
+                stockSync();
+            });
+        });
+    });
+</script>
+<?= $block->getButtonHtml() ?>
+<p class="stock_sync_note">
+    <b><?= __('Sync Success') ?></b>
+</p>

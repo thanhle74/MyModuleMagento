@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+            id="Lkg_StockSync::invoicesync"
+            title="Stock Sync"
+            module="Lkg_InvoiceSync"
+            sortOrder="20"
+            parent="Lkg_InvoiceSync::view"
+            action="stocksync/stocksync/index"
+            resource="Lkg_InvoiceSync::invoicesync"
+        />
+    </menu>
+</config>

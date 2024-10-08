@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Lkg_InvoiceSync::view" title="Lkg InvoiceSync" sortOrder="50">
+                    <resource id="Lkg_InvoiceSync::invoicesync" title="Invoice Sync Management" sortOrder="20" />
+                    <resource id="Lkg_InvoiceSync::config" title="Invoice Sync Configurations" sortOrder="30" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
