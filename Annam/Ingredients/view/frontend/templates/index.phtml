@@ -1,0 +1,83 @@
+<div class="healthlab__body">
+    <?php if (!is_null($block->getParamId())): ?>
+        <?php foreach ($block->getIngredientsById((int) $block->getParamId()) ?? [] as $ingredients): ?>
+            <div class="healthlab__banner">
+                <div class="healthlab__banner-ingredient__background">
+                    <?php if(!is_null($ingredients->getBanner())) : ?>
+                        <?php $img = $block->serializer()->unserialize($ingredients->getBanner()); ?>
+                        <img src="<?= $img[0]['url'] ?>" alt="<?= $ingredients->getName() ?>">
+                    <?php endif; ?>
+                </div>
+
+                <div class="healthlab__banner-content__insight align-center">
+                    <div class="container-content">
+                        <div class="insight-breadcrumb">
+                            <?php $breabcrumbs = $block->getBreadcrumb() ?>
+                            <?php foreach($breabcrumbs  as $breabcrumb): ?>
+                                <?php if($breabcrumb != null): ?>
+                                    <a href="<?= $block->escapeUrl($breabcrumb["url"]) ?>"><?= $breabcrumb["title"] ?></a>
+                                    <span>|</span>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                            <a href="javascript:void(0)"><?= $ingredients->getName() ?></a>
+                        </div>
+                        <div class="ttl-lg">
+                            <h2><?= $ingredients->getName() ?></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-content" style="height: calc(100% - 378px);">
+                <div class="lst-ingredient auto-scroll-green-bar">
+                    <?php if (!is_null($ingredients->getIngredients())): ?>
+                        <?php $ingredientData = $block->serializer()->unserialize($ingredients->getIngredients()); ?>
+                        <table>
+                            <tr>
+                                <th></th>
+                                <th><?= __('Complex Carbs')?></th>
+                                <th><?= __('Vitamins')?></th>
+                                <th><?= __('Fiber')?></th>
+                                <th><?= __('Minerals')?></th>
+                                <th><?= __('Benefit')?></th>
+                            </tr>
+                            <?php foreach ($ingredientData['ingredients'] ?? [] as $ingredient): ?>
+                                <?php $ingredient = $block->getIngredientById((int) $ingredient['value'])  ?>
+                                <?php foreach ($ingredient ?? [] as $item): ?>
+                                    <tr>
+                                        <td>
+                                            <a href="<?= $block->getUrl('ingredient/detail/index',['id' => $item->getId()]) ?>">
+                                                <span><?= $item->getName() ?></span>
+                                                <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/ingredients/icon-link.svg')) ?>" alt="icon-link.svg">
+                                            </a>
+                                        </td>
+                                        <?php if (!is_null($item->getNutritionalIngredients())): ?>
+                                            <?php $nutritionalIngredients = $block->serializer()->unserialize($item->getNutritionalIngredients()) ?>
+                                            <?php $i = 0 ?>
+                                            <?php foreach ($nutritionalIngredients['nutritional_ingredients'] as $ingredients):?>
+                                                <?php if ($ingredients['value'] != 3): ?>
+                                                    <?php
+                                                        $i = $i + 1;
+                                                        if($i > 4) { break; }
+                                                    ?>
+                                                    <td>
+                                                        <span class="ajax-star-icon" data-fill="<?= $ingredients['star'] ?? 0 ?>"><?= $ingredients['star'] ?? 0 ?></span>
+                                                    </td>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        <?php endif; ?>
+                                        <td><?= __('Rich at fiber...') ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </table>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

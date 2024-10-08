@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="healthlab_meal_plan" resource="default" engine="innodb" comment="Meal Plan Table">
+        <column xsi:type="int" name="id" identity="true" unsigned="false" nullable="false" comment="ID"/>
+        <column xsi:type="text" name="name" nullable="false" comment="Post Name"/>
+        <column xsi:type="text" name="image" nullable="true" comment="Image"/>
+        <column xsi:type="text" name="content" nullable="true"  comment="Content"/>
+        <column xsi:type="text" name="store" nullable="true" comment="Store"/>
+        <column xsi:type="text" name="day_1" nullable="true" comment="Day 1"/>
+        <column xsi:type="text" name="day_2" nullable="true" comment="Day 2"/>
+        <column xsi:type="text" name="day_3" nullable="true" comment="Day 3"/>
+        <column xsi:type="text" name="day_4" nullable="true" comment="Day 4"/>
+        <column xsi:type="text" name="day_5" nullable="true" comment="Day 5"/>
+        <column xsi:type="text" name="day_6" nullable="true" comment="Day 6"/>
+        <column xsi:type="text" name="day_7" nullable="true" comment="Day 7"/>
+        <column xsi:type="int" name="status" nullable="true" comment="Meal Plan Status"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

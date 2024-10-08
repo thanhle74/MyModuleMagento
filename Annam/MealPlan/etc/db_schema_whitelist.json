@@ -1,0 +1,24 @@
+{
+    "healthlab_meal_plan": {
+        "column": {
+            "id": true,
+            "name": true,
+            "image": true,
+            "content": true,
+            "store": true,
+            "day_1": true,
+            "day_2": true,
+            "day_3": true,
+            "day_4": true,
+            "day_5": true,
+            "day_6": true,
+            "day_7": true,
+            "status": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

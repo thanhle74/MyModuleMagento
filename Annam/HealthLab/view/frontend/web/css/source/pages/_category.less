@@ -1,0 +1,271 @@
+.healthlab_category-product-view,
+.healthlab_category-products-view,
+.meal-plan-products,
+.meal-plan-product,
+.ingredient-detail-product,
+.healthlab_search-product-view
+{
+    .healthlab{
+        .healthlab__banner{
+            &-content__category{
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                padding-top: 73px;
+                z-index: 1;
+                height: 100%;
+
+                .ttl-sm h3{
+                    font-family: @font-base-medium;
+                    font-size: 55px;
+                    color: @color-bold-green;
+                    line-height: 1;
+                    text-transform: uppercase;
+                    letter-spacing: -5px;
+                }
+
+                .ttl-lg h2{
+                    font-size: 80px;
+                    font-family: @font-title;
+                    color: @color-light-green;
+                    line-height: 1;
+                    text-transform: uppercase;
+                    letter-spacing: -5px;
+                }
+            }
+        }
+
+        .icon-select{
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            transform: translateY(-50%);
+        }
+
+        .healthlab__content{
+            margin-top: 40px;
+            overflow: hidden;
+            .container-content{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
+            }
+        }
+
+        .healthlab__description{
+            .healthlab-category-description{
+                *{
+                    font-size: 22px;
+                }
+                strong{
+                    font-size: 30px;
+                }
+            }
+        }
+
+        .product__content-top {
+            gap: 30px;
+            display: flex;
+            margin-bottom: 70px;
+            max-height: 420px;
+            min-height: 400px;
+            &-card{
+                width: 50%;
+                position: relative;
+                &-img {
+                    max-width: 420px;
+                    max-height: 420px;
+                    width: 100%;
+                    aspect-ratio: 1;
+                    /* text-align: center; */
+                    border-radius: 22px;
+                    background: #7B5D3D1A;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto;
+                    img {
+                        height: auto;
+                        object-fit: contain;
+                        max-width: 420px;
+                        max-height: 420px;
+                    }
+                }
+                .btn-wishlist {
+                    position: absolute;
+                    bottom: 0px;
+                    left: 50%;
+                    transform: translate(-50%, 50%);
+                    // max-width: 269px;
+                    min-width: 250px;
+                    // width: 80%;
+                    border-radius: 50px;
+                    background: @color-brown;
+                    border: 1px solid @color-brown;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                    padding: 0 23px;
+                    i, img {
+                        display: flex;
+                        align-items: center;
+                        width: 25px;
+                        height: 25px;
+                    }
+                    span {
+                        font-size: 22px;
+                    }
+                }
+            }
+            &-info{
+                width: 50%;
+                position: relative;
+                text-align: start;
+                padding-top: 40px;
+            }
+        }
+
+        .healthlab__product-detail {
+            margin-top: 100px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product__content-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            height: ~'calc(100% - 590px)';
+            overflow-y: auto;
+            margin-right: -50px;
+            padding: 50px;
+            &-category {
+                display: flex;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            &::-webkit-scrollbar {
+                width: 7px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #34643B;
+                border-radius : 50px;
+                cursor: pointer;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+        }
+
+        .product-category-more {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            &-item {
+                width: 223px;
+                height: 40px;
+                border: 1px solid @color-brown;
+                border-radius: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 22px;
+                font-weight: 400px;
+                background-color: none;
+                color: @color-brown;
+                transition: all 0.4s linear;
+                &:hover {
+                    background-color: @color-brown;
+                    color: #fff;
+                }
+            }
+        }
+
+        .collapse-box{
+            border: 1px solid @color-brown;
+            padding: 20px 30px 40px 30px;
+            border-radius: 22px;
+            position: relative;
+            transition: all 0.2s linear;
+
+            .wr-collapse-content{
+                height: 100%;
+            }
+            .collapse-button button{
+                bottom: 17px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%) rotate(180deg);
+                width: 20px;
+                height: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                background: none;
+                transition: all 0.2s linear;
+            }
+        }
+
+        .collapse-closed {
+            .wr-collapse-content{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .collapse-button {
+                button{
+                    transform: translateX(-50%);
+                }
+            }
+        }
+
+        .collapse-closed.collapse-box{
+            position: relative;
+            height: 100px !important;
+            overflow: hidden;
+        }
+
+        .product__relations{
+            margin-top: 30px;
+
+            .owl-wrapper{
+                position: relative;
+
+                .owl-carousel-relation{
+                    position: relative;
+                    margin: 30px 0;
+                }
+
+                .owl-prev , .owl-next{
+                    position: absolute;
+                    top: 100px;
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                    border-radius: 50%;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .owl-prev{
+                    left : 0px;
+                    transform: rotate(-180deg) translate(44px, 0%);
+                }
+
+                .owl-next{
+                    right : 0px;
+                    transform: translateX(44px);
+                }
+            }
+        }
+
+    }
+}
+
+

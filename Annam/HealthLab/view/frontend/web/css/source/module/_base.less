@@ -1,0 +1,222 @@
+.padding-base{
+    padding: 0 @padding-base;
+}
+.healthlab-index-index,
+.healthlab_search-results-view,
+.healthlab_search-product-view,
+.healthlab_category-product-view,
+.healthlab_category-products-view,
+.meal-plan-index,
+.meal-plan-view,
+.meal-plan-products,
+.meal-plan-product,
+.insights-view-index,
+.insights-detail-index,
+.ingredients-detail-index,
+.ingredient-detail-index,
+.ingredient-detail-product{
+    #maincontent{
+        padding: 0;
+        & >.columns.col1-layout > .container{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            max-width: unset;
+            .col-lg-12, .col-md-12{
+                padding: 0 !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+    }
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: @color-green-1;
+        border-radius : 50px;
+        cursor: pointer;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+}
+.healthlab{
+    h1, h2, h3, h4, h5, h6, span, a, p{
+        font-family: @font-base-medium;
+        padding: 0;
+        margin: 0;
+    }
+    h1, h2, h3, h4, h5, h6{
+        line-height: 1;
+    }
+    span, a, p{
+        line-height: 1.5;
+    }
+}
+.container-content{
+    width: 90%;
+    max-width: 1360px;
+    padding: 0 54px;
+    margin: 0 auto;
+    @media only screen and (max-width: 1240px) {
+        max-width: 972px;
+    }
+
+    @media only screen and (max-width: 880px) {
+        width: ~'calc(100% - 60px)';
+        padding: 0 20px;
+    }
+    @media print {
+        .container-content {
+            width: 90%;
+            max-width: 1360px;
+            padding: 0 54px;
+            margin: 0 auto;
+        }
+    }
+}
+
+.auto-scroll-green-bar{
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: @color-green-1;
+        border-radius : 50px;
+        cursor: pointer;
+    }
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+.fit-height{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.d-flex{
+    display: flex;
+}
+.hvdtrial{
+    font-family: @font-title !important;
+}
+.milano-bold {
+    font-family: @font-base-bold !important;
+}
+.milano-medium {
+    font-family: @font-base-medium!important;
+}
+.color-light-green{
+    color : @color-light-green !important;
+}
+.color-white{
+    color: #FFFFFF;;
+}
+.color-white-green{
+    color: @color-white !important;
+}
+.color-green{
+    color: @color-green-1;
+}
+.color-brown{
+    color: @color-brown;
+}
+.color-mid-brown{
+    color : @color-base;
+}
+.color-bold-green{
+    color: @color-bold-green;
+}
+.bg-disabled{
+    background-color: @color-disabled !important;
+    border: unset !important;
+}
+.fs-16px {
+    font-size: 18px;
+}
+.fs-18px {
+    font-size: 18px;
+}
+.fs-20px{
+    font-size: 20px;
+}
+.fs-22px {
+    font-size: 22px;
+}
+.fs-25px{
+    font-size: 25px;
+}
+.fs-28px {
+    font-size: 28px;
+}
+.fs-30px{
+    font-size: 30px;
+}
+.fs-35px{
+    font-size: 35px;
+}
+.fs-36px{
+    font-size: 36px;
+}
+.fs-50px {
+    font-size : 50px;
+}
+.fs-55px {
+    font-size : 55px;
+}
+.fs-80px {
+    font-size : 80px;
+}
+.mgb-10{
+    margin-bottom: 10px;
+}
+.mgb-20{
+    margin-bottom: 20px;
+}
+.mgb-30{
+    margin-bottom: 30px;
+}
+
+.txt-center{
+    text-align: center;
+}
+.text-over-ellipsis{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.icon-star-fill{
+    width: 16px;
+    height: 16px;
+    &::before{
+        content: '';
+        display: block;
+        background-image: @icon-star-fill;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.icon-star{
+    width: 16px;
+    height: 16px;
+    &::before{
+        content: '';
+        display: block;
+        background-image: @icon-star;
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 16px;
+        height: 16px;
+    }
+}

@@ -1,0 +1,86 @@
+<div id="modal-create-wishlist" style="width: 100%;">
+    <div class="modal-body-content-wishlist" style="width: 100%;">
+        <div class="container-modal">
+            <form class="form" id="create-form" method="post" data-mage-init='{"validation":{}}'>
+
+                <fieldset class="fieldset">
+                    <legend><?= __('Firstname') ?></legend>
+                    <div class="field create-firstname required">
+                        <label class="label" for="create-firstname"><span><?= __('Firstname') ?></span></label>
+                        <div class="control">
+                            <input name="create-firstname" id="create-firstname" title="create-firstname" value="" type="text" class="input-text required-entry"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend><?= __('Lastname') ?></legend>
+                    <div class="field create-lastname required">
+                        <label class="label" for="create-lastname"><span><?= __('Lastname') ?></span></label>
+                        <div class="control">
+                            <input name="create-lastname" id="create-lastname" title="create-lastname" value="" type="text" class="input-text required-entry"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend><?= __('Email') ?></legend>
+                    <div class="field create-email required">
+                        <label class="label" for="create-email"><span><?= __('Email') ?></span></label>
+                        <div class="control">
+                            <input name="create-email" id="create-email" title="create-email" value="" type="email" class="input-text required-entry"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend><?= __('Date of Birth') ?></legend>
+                    <div class="field create-dob required">
+                        <label class="label" for="create-dob"><span><?= __('Date of Birth') ?></span></label>
+                        <input name="create-dob" id="create-dob" title="create-dob" value="" type="text" class="input-text required-entry"/>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend><?= __('Password') ?></legend>
+                    <div class="field create-password required">
+                        <label class="label" for="create-password"><span><?= __('Password') ?></span></label>
+                        <div class="control">
+                            <input name="create-password" id="create-password" title="create-password" value="" type="password" class="input-text required-entry"/>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="fieldset">
+                    <legend><?= __('Password confirm') ?></legend>
+                    <div class="field create-password-confirm required">
+                        <label class="label" for="create-password-confirm"><span><?= __('Password confirm') ?></span></label>
+                        <div class="control">
+                            <input name="create-password-confirm" id="create-password-confirm" title="create-password-confirm" value="" type="password" class="input-text required-entry"/>
+                            <div id="message-password-confirm"></div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="actions-toolbar full-width-footer">
+                    <div class="primary">
+                        <button id="submit-button-create" type="button" title="Submit" class="action submit primary">
+                            <?php echo __('Submit'); ?>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div id="error-message-create" style="display:none; color:red;"></div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+    	"*": {
+    		"Annam_HealthLab/js/create-account": {
+    			"url": "<?= $block->getFormAction(); ?>"
+            }
+        }
+    }
+</script>

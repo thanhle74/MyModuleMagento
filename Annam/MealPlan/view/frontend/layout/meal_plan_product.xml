@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="content">
+        <block class="Magento\Framework\View\Element\Template" name="healthlab_index_header" template="Annam_HealthLab::layout/healthlab-header.phtml" />
+        <block class="Annam\HealthLab\Block\Product" name="meal_plan_product" template="Annam_MealPlan::product.phtml" >
+            <block class="Annam\HealthLab\Block\Product" name="healthlab_header_product" template="Annam_HealthLab::product/header-product.phtml"/>
+            <block class="Annam\HealthLab\Block\Product" name="healthlab_list_categories_product" template="Annam_HealthLab::product/list-categories.phtml"/>
+            <block class="Annam\HealthLab\Block\Product" name="healthlab_description_product" template="Annam_HealthLab::product/description-product.phtml"/>
+            <block class="Annam\HealthLab\Block\Product" name="healthlab_related_product" template="Annam_HealthLab::product/related-product.phtml">
+                <arguments>
+                    <argument name="detail_url" translate="true" xsi:type="string">detail_url</argument>
+                </arguments>
+            </block>
+        </block>
+        <block class="Magento\Store\Block\Switcher" name="healthlab_index_footer" template="Annam_HealthLab::layout/healthlab-footer.phtml" />
+        <block class="Annam\HealthLab\Block\Menu" name="healthlab_index_menu" template="Annam_HealthLab::layout/menu.phtml" />
+        <block class="Magento\Framework\View\Element\Template" name="healthlab_index_wishlist" template="Annam_HealthLab::layout/wishlist.phtml" />
+        <block class="Annam\HealthLab\Block\LoginForm" name="healthlab_popup_login" template="Annam_HealthLab::popup/login.phtml" />
+        <block class="Annam\HealthLab\Block\CreateAccountForm" name="healthlab_popup_create_account" template="Annam_HealthLab::popup/create-account.phtml" />
+
+        <referenceContainer name="footer-container" remove="true" />
+        <referenceContainer name="header.content" remove="true" />
+    </referenceContainer>
+</page>

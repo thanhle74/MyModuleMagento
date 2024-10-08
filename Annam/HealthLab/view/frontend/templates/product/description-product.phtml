@@ -1,0 +1,17 @@
+<?php
+$product = $block->getProduct();
+?>
+<div class="product__content-bottom-content">
+    <?= $product->getShortDescription() ?>
+</div>
+
+<div class="product__content-bottom-content collapse-box collapse-closed">
+    <div class="wr-collapse-content">
+        <?= $product->getDescription() ?>
+    </div>
+    <div class="collapse-button">
+        <button class="ajax-collapse">
+            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/product-icon/collapse-down.svg')) ?>" alt="collapse-icon">
+        </button>
+    </div>
+</div>

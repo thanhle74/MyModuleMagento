@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <healthlab_product_catalog>
+            <attribute>
+                <search_by_keyword>search_by_keyword</search_by_keyword>
+            </attribute>
+            <content>
+                <title_sm>welcome to</title_sm>
+                <title_lg>health lab</title_lg>
+                <description>Discover healthy premium products &lt;br/&gt; recommended by Annam Gourmet dieticians</description>
+                <placeholder>Enter keywords</placeholder>
+                <input_example>Example: “Function Foods”, “Yoga Mat”, “Skincare”,...</input_example>
+                <banner_right>
+                    <title>Tailored Diet Plan</title>
+                    <description>(for weight loss, muscle gain,...)</description>
+                </banner_right>
+                <banner_left>
+                    <title>Health Insights &lt;br/&gt; Infographics</title>
+                    <description>Stay imformed and entertained with &lt;br/&gt; our healh infographics</description>
+                </banner_left>
+            </content>
+        </healthlab_product_catalog>
+    </default>
+</config>

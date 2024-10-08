@@ -1,0 +1,87 @@
+<div class="healthlab__body">
+    <div class="container-content fit-height">
+        <?php if (!is_null($block->getParamId())): ?>
+            <?php $priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data'); ?>
+            <?php foreach ($block->getIngredientById((int) $block->getParamId()) ?? [] as $ingredient): ?>
+
+                <div class="insight-breadcrumb" style="margin-top:50px;">
+                    <?php $breabcrumbs = $block->getBreadcrumb() ?>
+                    <?php foreach($breabcrumbs  as $breabcrumb): ?>
+                        <?php if($breabcrumb != null): ?>
+                            <a href="<?= $block->escapeUrl($breabcrumb["url"]) ?>"><?= $breabcrumb["title"] ?></a>
+                            <span>|</span>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <a href="javascript:void(0)"><?= $ingredient->getName() ?></a>
+                </div>
+
+                <div class="ingredient-header">
+                    <div class="ingredient-thumb">
+                        <?php if(!is_null($ingredient->getImage())) : ?>
+                            <?php $img = $block->serializer()->unserialize($ingredient->getImage()); ?>
+                            <img src="<?= $img[0]['url'] ?>" alt="<?= $ingredient->getName() ?>">
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="nutritional">
+                        <?php if (!is_null($ingredient->getNutritionalIngredients())): ?>
+                            <?php $nutritionalIngredients = $block->serializer()->unserialize($ingredient->getNutritionalIngredients()) ?>
+                            <?php
+                                $array = [
+                                    __('Complex Carbonhydrates'),
+                                    __('Vitamins'),
+                                    __('Fiber'),
+                                    __('Antioxidants'),
+                                    __('Minerals')
+                                ];
+                            ?>
+                            <?php foreach ($nutritionalIngredients['nutritional_ingredients'] as $key => $nutritional):?>
+                                <div class="nutritional-item">
+                                    <span class="fs-22px color-brown"><?= $array[$key] . ' :' ?></span>
+                                    <span class="ajax-star-icon" data-fill="<?= $nutritional['star'] ?? 0 ?>"><?= $nutritional['star'] ?? 0 ?></span>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <h2 class="ingredient-title mgb-30"><?= $ingredient->getName() ?></h2>
+
+                <div class="ingredient-content mgb-30">
+                    <?php if(!is_null($ingredient->getShortContent())) : ?>
+                        <?= $block->serializer()->unserialize($ingredient->getShortContent()); ?>
+                    <?php endif; ?>
+                </div>
+
+                <div class="healthlab-product-category auto-scroll-green-bar">
+                    <ul class="healthlab-product-list">
+                        <?php if (!is_null($ingredient->getSkus())): ?>
+                            <?php $skus = $block->serializer()->unserialize($ingredient->getSkus()); ?>
+                            <?php foreach ($skus as $sku): ?>
+                                <?php $product = $block->getProductBySku($sku) ?>
+                                <li class="healthlab-product-item">
+                                    <a href="<?= $block->getUrl('ingredient/detail/product', ['id' => $product->getId()]) ?>">
+                                        <div class="healthlab-product-img">
+                                            <img src="<?= $block->getUrlImage($product) ?>" alt="<?= $product->getName() ?>">
+                                        </div>
+                                        <div class="d-flex-column-start">
+                                            <h4 class="fs-16px color-bold-green milano-bold">Fix Me</h4>
+                                            <h3 class="fs-16px color-bold-green milano-medium text-over-ellipsis" style="max-width: 180px;">
+                                                <?php echo $product['name'] ?>
+                                            </h3>
+                                            <div class="fs-20px color-bold-green milano-bold" style="line-height: 1;">
+                                                <?= $priceHelper->currency($product['price'], true, false) ?>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            <?php endforeach;?>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>
+

@@ -1,0 +1,74 @@
+<div class="healthlab__body">
+    <?php if (!is_null($block->getParamId())): ?>
+        <div class="healthlab__view-title">
+            <div class="container-content">
+                <h4 class="fs-55px color-bold-green"><?= $block->escapeHtml(__('Meal Plan')) ?></h4>
+                <?php $meal = $block->getMeal() ?>
+                <h3 class="fs-80px hvdtrial color-light-green"><?= $block->escapeHtml($meal->getName()) ?></h3>
+                <div class="box-list-options">
+                    <label for="dish-list-options" class="fs-35px color-mid-brown"><?= __('Recommend product based on')?></label>
+                    <div class="select-wrapper" style="position: relative;">
+                        <select id="dish-list-options">
+                            <?php foreach ($block->lstOptions() as $key => $option): ?>
+                                <option id="<?= $option['id'] ?>" value="<?= $option['id'] ?>"
+                                    <?= ($key ==  '1') ? ' selected="selected"' : '';?>>
+                                    <?= $option['name'] ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                        <img class="icon-select" src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/filter-icon/select-down-white.svg')) ?>" alt="icon-select">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="healthlab__content">
+            <div class="container-content">
+                <div class="healthlab__filter">
+                    <div class="row-filter-content">
+                        <div class="healthlab__toolbar-find">
+
+                            <div class="healthlab-search">
+                                <button class="index-search-btn" type="submit">
+                                    <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/index-search.svg')) ?>" alt="icon-search">
+                                </button>
+                                <input
+                                    class="c-text-input"
+                                    type="text" value=""
+                                    placeholder="<?= $block->escapeHtml(__("Enter keyword")) ?>"/>
+                            </div>
+
+                            <div class="healthlab-category-toolbar" style="position: relative;">
+                                <select id="healthlab-toolbar">
+                                    <option value="name"
+                                            selected="selected"><?= $block->escapeHtml(__("Product Name")) ?></option>
+                                    <option value="price"><?= $block->escapeHtml(__("Price")) ?></option>
+                                    <option value="weight"><?= $block->escapeHtml(__("Weight")) ?></option>
+                                </select>
+                                <img class="icon-select" src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/filter-icon/select-down-white.svg')) ?>" alt="icon-select">
+                            </div>
+
+                            <button class="healthlab-sort-by" data-value="asc">
+                                <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/filter-icon/filter-asc.svg')) ?>" alt="asc-icon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="healthlab-product-category auto-scroll-green-bar">
+                    <ul id="healthlab-products" class="healthlab-product-list"></ul>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Annam_MealPlan/js/products": {
+                "url": "<?= $block->getUrl('meal/ajax/products')?>",
+                "id": <?= $block->getParamDish() ?>
+        }
+    }
+}
+</script>

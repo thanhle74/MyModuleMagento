@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="healthlab_mapping_url" resource="default" engine="innodb" comment="Mapping Url Table">
+        <column xsi:type="int" name="id" identity="true" unsigned="false" nullable="false" comment="ID"/>
+        <column xsi:type="text" name="url_vn" nullable="false" comment="Url VN"/>
+        <column xsi:type="text" name="url_en" nullable="false" comment="Url EN"/>
+        <column xsi:type="int" name="status" nullable="true" comment="Mapping Url Status"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+    </table>
+</schema>

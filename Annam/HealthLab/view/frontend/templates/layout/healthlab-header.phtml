@@ -1,0 +1,64 @@
+<?php $helper = $this->helper('Annam\HealthLab\Helper\Data'); ?>
+<div class="healthlab">
+	<div class="healthlab__header">
+        <div class="healthlab__header-group container-content">
+            <div class="healthlab__header-group-menu back-home-group">
+                <a href="<?= $helper->previousPage() ?>">
+                    <button class="healthlab-icon-circle healthlab-header-back">
+                        <i>
+                            <svg width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.1799 22.1802L2.17993 12.1802L12.1799 2.18018" stroke="#F2EDD9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </i>
+                    </button>
+                </a>
+                <a href="<?= $block->getUrl('healthlab') ?>">
+                    <button class="healthlab-icon-circle healthlab-header-home">
+                        <i>
+                            <svg width="35" height="31" viewBox="0 0 35 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.71089 30.1802H15.3776V21.5214H19.703V30.1802H30.3696V17.3468H34.695L17.5522 0.180176L0.385498 17.3468H4.71089V30.1802Z" fill="#F2EDD9"/>
+                            </svg>
+                        </i>
+                    </button>
+                </a>
+            </div>
+            <a href="<?= $block->getUrl('healthlab') ?>" class="healthlab-logo">
+                <div class="healthlab-logo-lg">
+                    <img src="<?= $helper->getMediaBaseUrl() .'healthlab_logo/'.$helper->headerLogo() ?>" alt="" />
+                </div>
+            </a>
+            <div class="healthlab__header-group-menu">
+                <button class="healthlab-icon-circle healthlab-header-icon-wishlist">
+                    <img class="wishlist" src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/header-wishlist.svg')) ?>" alt="icon-memu" />
+                    <span class="tooltip-qty">0</span>
+                </button>
+                <button class="healthlab-icon-circle healthlab-header-icon-menu">
+                    <img class="icon-menu" src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/header-menu.svg')) ?>" alt="icon-memu" />
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        require(['jquery', "mage/url"], function($) {
+            $(document).ready(function () {
+                let ajaxUrl = "<?= $block->getUrl('healthlab/wishlist/count') ?>";
+                $.ajax({
+                    url: ajaxUrl,
+                    type: 'POST',
+                    dataType: 'json',
+                    showLoader: true,
+                    success: function(response) {
+                        if(response.success)
+                        {
+                            $('.tooltip-qty').text(response.count)
+                        }
+
+                        $("body").trigger("processStop");
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>

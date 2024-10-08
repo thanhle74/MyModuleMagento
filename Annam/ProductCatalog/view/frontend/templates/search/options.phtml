@@ -1,0 +1,20 @@
+<?php $helper = $this->helper('Annam\HealthLab\Helper\Data'); ?>
+<?php $optionsData = $block->getData(); ?>
+<?php if (!empty($optionsData['data']) && count($optionsData['data'])) : ?>
+    <div class="health-search-list scroll-content" id="health-search-list">
+        <ul class="category__list" id="category-list">
+            <?php foreach ($optionsData['data'] as $key => $option) : ?>
+                <li id='<?= $option['value_id'] ?>'>
+                    <a href="<?= $block->getUrl('healthlab_search/results/view', ['id' => $option['value_id']])?>" class="category__list-link">
+                        <h5 class="category__list-title fs-25px color-mid-brown"><?= $option['value'] ?></h5>
+                        <span class="category__list-number fs-25px color-mid-brown"><?= $option['count'] ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php else : ?>
+    <div class="health-search-no-result ">
+        <p><?= __($helper->noResult()) ?></p>
+    </div>
+<?php endif; ?>

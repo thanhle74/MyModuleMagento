@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <healthlab_meal_plan>
+            <attribute>
+                <meal>meal_plan</meal>
+                <title>tailored &lt;br/&gt; diet plan</title>
+                <des>Embark on a culinary journey &lt;br/&gt; with these delectable and wholesome meal plans.&lt;br/&gt; Here are three delightful meal plans for you to try!</des>
+            </attribute>
+            <mail>
+                <name>customerservice</name>
+                <email>customerservice@annam-gourmet.com</email>
+            </mail>
+        </healthlab_meal_plan>
+    </default>
+</config>

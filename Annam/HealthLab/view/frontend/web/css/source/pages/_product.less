@@ -1,0 +1,59 @@
+
+.healthlab-product-category{
+    height: 100%;
+    margin-top: 20px;
+    margin-right: -50px;
+    padding-right: 50px;
+    .healthlab-product-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        column-gap: 20px;
+        row-gap: 30px;
+        margin-top: 20px;
+    }
+}
+
+.healthlab-product-item {
+    a {
+        display: flex;
+        height: 288px;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .healthlab-product-img{
+            height: 200px;
+            width:  100%;
+            border: 1px solid @color-green-1;
+            border-radius : 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s linear;
+            overflow: hidden;
+            img{
+                max-width: 100%;
+                max-height: 100%;
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+        h4, h3{
+            max-width: 172px;
+            line-height: 1.5;
+        }
+        &:hover {
+            .healthlab-product-img{
+                background: #7B5D3D1A;
+                border: 1px solid #7B5D3D1A;
+            }
+        }
+        .d-flex-column-start{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 0 15px;
+            row-gap: 3px;
+        }
+    }
+}

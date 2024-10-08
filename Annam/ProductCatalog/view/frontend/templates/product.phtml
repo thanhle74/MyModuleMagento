@@ -1,0 +1,29 @@
+<div class="healthlab__body">
+    <div id="product-popup"></div>
+    <div class="healthlab__product-detail container-content">
+        <?= $this->getChildHtml('healthlab_header_product'); ?>
+        <div class="product__content-bottom">
+            <?= $this->getChildHtml('healthlab_list_categories_product'); ?>
+            <?= $this->getChildHtml('healthlab_description_product'); ?>
+            <?php
+                $content = $block->getChildBlock('healthlab_related_product');
+                if ($content) {
+                    $content->setData('detail_url', 'healthlab_category/product/view');
+                    echo $content->toHtml();
+                }
+            ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+    	"*": {
+            "Annam_ProductCatalog/js/carousel": {},
+    		"Annam_HealthLab/js/product-wishlist": {
+    			"url": "<?= $block->getAddToWishlistUrl(); ?>",
+    			"isLoggedInUrl" : "<?= $block->getIsLoggedIntUrl(); ?>"
+    		}
+    	}
+    }
+</script>

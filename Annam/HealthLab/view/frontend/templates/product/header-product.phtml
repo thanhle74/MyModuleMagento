@@ -1,0 +1,40 @@
+<?php
+$product = $block->getProduct();
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$helper = $this->helper('Annam\HealthLab\Helper\Data');
+?>
+<div class="product__content-top">
+    <div class="product__content-top-card">
+        <div class="product__content-top-card-img">
+            <img src="<?= $block->getUrlImage($product) ?>" alt="<?= $product->getName() ?>">
+        </div>
+        <?php if ($product->isSaleable()) : ?>
+            <button type="button" title="<?php echo __('Add to Wishlist'); ?>" class="btn-wishlist">
+                <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/product-icon/add-to-wishlist.svg')) ?>" alt="wishlist-icon">
+                <span class="milano-bold"><?php echo __('Add to Wishlist'); ?></span>
+            </button>
+        <?php endif; ?>
+    </div>
+    <div class="product__content-top-info">
+        <h3 class="fs-28px milano-bold color-bold-green mgb-10">
+            <?php
+                $options = $block->healthlabBrand();
+            ?>
+            <?php if (count($options) > 0) : ?>
+                <?php $totalOptions = count($options); ?>
+                <?php foreach ($options as $key => $optionId): ?>
+                    <span><?= $block->attributeText((int) $optionId) ?><?= ($totalOptions > 1 && $key < $totalOptions - 1) ? ' -' : '' ?></span>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </h3>
+        <h2 class="fs-28px milano-medium color-bold-green mgb-10">
+            <?= $product->getName() ?>
+        </h2>
+        <div class="fs-36px milano-medium color-brown">
+            <?= $priceHelper->currency($product->getPrice(), true, false) ?>
+        </div>
+        <div class="fs-16px milano-medium color-brown">
+            *Reference Price
+        </div>
+    </div>
+</div>

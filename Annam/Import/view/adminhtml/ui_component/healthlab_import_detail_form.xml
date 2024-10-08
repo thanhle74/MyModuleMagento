@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">healthlab_import_detail_form.healthlab_import_detail_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Import Setting</item>
+        <item name="reverseMetadataMerge" xsi:type="boolean">true</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Annam\Import\Block\Adminhtml\Edit\Button\Save"/>
+        </buttons>
+        <layout>
+            <navContainerName>left</navContainerName>
+            <type>tabs</type>
+        </layout>
+        <deps>
+            <dep>healthlab_import_detail_form.healthlab_import_detail_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="healthlab_import_detail_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="healthlab_import/detail/save"/>
+        </settings>
+        <dataProvider class="Annam\Mapping\Model\MappingDataProvider" name="healthlab_import_detail_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="foo">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Import Data</item>
+                <item name="sortOrder" xsi:type="number">60</item>
+            </item>
+        </argument>
+        <settings>
+            <label translate="true"></label>
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+            <dataScope>data</dataScope>
+        </settings>
+        <field name="import_setting" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Import Setting</label>
+                <dataScope>import_setting</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Annam\Import\Ui\Component\Options"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <file name="csv_file">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">File Import</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="annam_import/detail/save"/>
+                    </item>
+                </item>
+            </argument>
+        </file>
+    </fieldset>
+</form>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceContainer name="content">
+        <block class="Magento\Framework\View\Element\Template" name="healthlab_index_header" template="Annam_HealthLab::layout/healthlab-header.phtml" />
+        <block class="Annam\ProductCatalog\Block\Index" name="healthlab_category_products" template="Annam_ProductCatalog::products.phtml" />
+        <block class="Magento\Store\Block\Switcher" name="healthlab_index_footer" template="Annam_HealthLab::layout/healthlab-footer.phtml" />
+        <block class="Annam\HealthLab\Block\Menu" name="healthlab_index_menu" template="Annam_HealthLab::layout/menu.phtml" />
+        <block class="Magento\Framework\View\Element\Template" name="healthlab_index_wishlist" template="Annam_HealthLab::layout/wishlist.phtml" />
+
+        <referenceContainer name="footer-container" remove="true" />
+        <referenceContainer name="header.content" remove="true" />
+    </referenceContainer>
+</page>

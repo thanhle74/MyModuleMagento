@@ -1,0 +1,70 @@
+<?php
+$helper = $this->helper('Annam\HealthLab\Helper\Data');
+$valueId = (int)$helper->getParameterValue('id');
+?>
+<div class="healthlab__body">
+    <div class="healthlab__banner">
+        <div class="healthlab__banner-background">
+            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/search-banner.png')) ?>" alt="search-banner.png" />
+        </div>
+
+        <div class="healthlab__banner-content">
+            <div class="container-content" style="width: 100%;">
+                <div class="fs-55px color-bold-green">
+                    <h4><?= __('Result for') ?></h4>
+                </div>
+                <div class="ttl-sm">
+                    <h3><?= $block->getNameOption()?></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="healthlab__content">
+        <div class="container-content">
+            <div class="healthlab__filter">
+                <div class="row-filter-content">
+                    <div class="healthlab__toolbar-find">
+
+                        <div class="healthlab-category-search">
+                            <button class="index-search-btn" type="submit">
+                                <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/index-search.svg')) ?>" alt="icon-search">
+                            </button>
+                            <input
+                                class="c-text-input"
+                                type="text" value=""
+                                placeholder="<?= $block->escapeHtml(__("Enter keyword")) ?>"/>
+                        </div>
+
+                        <div class="healthlab-category-toolbar" style="position: relative;">
+                            <select id="healthlab-toolbar">
+                                <option value="name"
+                                        selected="selected"><?= $block->escapeHtml(__("Product Name")) ?></option>
+                                <option value="price"><?= $block->escapeHtml(__("Price")) ?></option>
+                                <option value="weight"><?= $block->escapeHtml(__("Weight")) ?></option>
+                            </select>
+                            <img class="icon-select" src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/filter-icon/select-down-white.svg')) ?>" alt="icon-select">
+                        </div>
+
+                        <button class="healthlab-sort-by" data-value="asc">
+                            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/filter-icon/filter-asc.svg')) ?>" alt="asc-icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="healthlab-product-category auto-scroll-green-bar">
+                <ul id="healthlab-category-products" class="healthlab-product-list"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Annam_SearchResult/js/products": {
+                "url": "<?= $block->getBaseUrl() . 'healthlab_search/ajax/products' ?>",
+                "id": <?= $valueId ?>
+    }
+}
+}
+</script>

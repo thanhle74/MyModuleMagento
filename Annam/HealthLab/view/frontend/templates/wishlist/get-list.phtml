@@ -1,0 +1,94 @@
+<?php
+$products = $block->getData();
+$items = $block->getItems();
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+<?php if (count($products)) : ?>
+    <?php foreach ($products['data'] as $product) : ?>
+        <li class="wishlist-item wishlist-item-<?= $items[$product->getId()] ?>">
+            <div class="item-card">
+                <div class="item-card-header">
+                    <div class="item-card-img">
+                        <a href="<?= $block->getUrl('meal/plan/product', ['id' => $product->getId()]) ?>">
+                            <img src="<?= $product['image'] ?>" alt="<?= $product->getName() ?>"/>
+                        </a>
+                    </div>
+                    <div class="item-card-content">
+                        <div class="des">
+                            <span>
+                                <?php
+                                    $options = $block->healthlabBrand($product->getId());
+                                    $totalOptions = count($options);
+                                ?>
+                                <?php foreach ($options as $key => $optionId): ?>
+                                    <span><?= $block->attributeText((int)$optionId) ?><?= ($totalOptions > 1 && $key < $totalOptions - 1) ? ' -' : '' ?></span>
+                                <?php endforeach; ?>
+                            </span>
+                        </div>
+                        <div class="ttl">
+                            <h5>
+                                <a href="<?= $block->getUrl('meal/plan/product', ['id' => $product->getId()]) ?>"><?= $product->getName() ?></a>
+                            </h5>
+                            <span><?= __('Korea') ?></span>
+                        </div>
+                        <div class="item-card-price">
+                            <span><?= $priceHelper->currency($product['price'], true, false) ?></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-card-bottom" data-item-id="<?= $items[$product->getId()] ?>"></div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+<?php endif; ?>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "mage/url"
+    ], function ($, urlBuilder) {
+        $('.item-card-bottom').click(function () {
+            let ajaxUrl = "<?= $block->getUrl('healthlab/wishlist/remove') ?>";
+            let itemId = $(this).data('item-id');
+            let itemElement = '.wishlist-item-' + itemId;
+            $.ajax({
+                url: ajaxUrl,
+                type: 'POST',
+                data: {
+                    item_id: itemId
+                },
+                dataType: 'json',
+                showLoader: true,
+                success: function (response) {
+                    if (response.success) {
+                        $(itemElement).remove();
+                        setCount();
+                        $("body").trigger("processStop");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+
+        function setCount() {
+            let ajaxUrl = urlBuilder.build('healthlab/wishlist/count');
+            $.ajax({
+                url: ajaxUrl,
+                type: 'POST',
+                dataType: 'json',
+                showLoader: true,
+                success: function (response) {
+                    if (response.success) {
+                        $('.tooltip-qty').text(response.count)
+                    }
+
+                    $("body").trigger("processStop");
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    });
+</script>

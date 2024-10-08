@@ -1,0 +1,154 @@
+<?php $helper = $this->helper('Annam\HealthLab\Helper\Data'); ?>
+
+<div class="healthlab__body">
+    <div class="healthlab__banner">
+        <div class="healthlab__banner-background">
+            <img src="<?= $helper->getMediaBaseUrl() .'healthlab_product_catalog/'.$helper->contentImage() ?>" alt="banner" />
+        </div>
+
+        <div class="healthlab__banner-content">
+            <div class="container-content" style="width: 100%;">
+                <div class="ttl-sm">
+                    <h3><?= $helper->contentTitleSm() ?></h3>
+                </div>
+                <div class="ttl-lg">
+                    <h2><?= $helper->contentTitleLg() ?></h2>
+                </div>
+                <div class="ttl-desc">
+                    <p><?= $helper->contentDescription() ?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="healthlab__content">
+        <div class="container-content">
+            <div class="healthlab__content-search">
+                <form action="" class="">
+                    <div class="healthlab__content-search-group base-margin">
+                        <label for="index-search"></label>
+                        <input id="index-search" type="text" placeholder="<?= __('Enter keywords') ?>" spellcheck="false"/>
+                        <button class="index-search-btn" type="submit">
+                            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/index-search.svg')) ?>" alt="icon-search">
+                        </button>
+                        <div class="healthlab-search-wrapper " id="healthlab-search-wrapper"></div>
+                    </div>
+                    <small class="index-main-search-des milano-medium"><?= $helper->contentInputExample() ?></small>
+                </form>
+            </div>
+            <div class="index-content-main auto-scroll-green-bar">
+                <div class="content-bottom">
+                    <!-- main categories -->
+                    <div class="index-category" style="margin-top: 15px;">
+                        <?php if(!empty($helper->mainCategory())): ?>
+                            <?php
+                                $idMainCategories = (int)$helper->mainCategory();
+                                $mainCategories = $block->getCategoryById($idMainCategories);
+                            ?>
+                            <!-- title -->
+                            <div class="index-category-ttl">
+                                <h5 class="fs-35px color-brown milano-medium"><?= $mainCategories->getName() ?></h5>
+                            </div>
+                            <!-- list item -->
+                            <?php $subCategories = $block->getSubcategories($idMainCategories) ?? [];?>
+                            <?php if(count($subCategories) > 0): ?>
+                                <div class="index-category-list">
+                                    <?php foreach ($subCategories as $category):  ?>
+                                        <a class="index-category-item" href="<?= $block->getUrl('healthlab_category/products/view', ['id' => $category->getId()])?>">
+                                            <div class="category-item-img">
+                                                <img src="<?= $category->getIcon() ?>" alt="<?= $category->getName() ?>">
+                                            </div>
+                                            <span class="category-ttl color-white-green fs-18px"><?= $category->getName() ?></span>
+                                        </a>
+                                    <?php endforeach; ?>
+                                    <!-- button collapse -->
+                                    <?php if(count($subCategories) > 4): ?>
+                                        <div class="button-collapse"></div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+
+                    <!-- health concerns -->
+                    <div class="index-category">
+                        <?php if(!empty($helper->concernsCategory())): ?>
+                            <?php
+                                $idHealthConcerns = (int)$helper->concernsCategory();
+                                $healthConcerns = $block->getCategoryById($idHealthConcerns);
+                            ?>
+                            <!-- title -->
+                            <div class="index-category-ttl">
+                                <h5 class="fs-35px color-brown milano-medium"><?= $healthConcerns->getName()?></h5>
+                            </div>
+                            <!-- list item -->
+                            <?php $subCategories = $block->getSubcategories($idHealthConcerns) ?? [];?>
+
+                            <?php if(count($subCategories) > 0): ?>
+                                <div class="index-category-list">
+                                    <?php foreach ($subCategories as $category):  ?>
+                                        <a class="index-category-item" href="<?= $block->getUrl('healthlab_category/products/view', ['id' => $category->getId()])?>">
+                                            <div class="category-item-img">
+                                                <img src="<?= $category->getIcon() ?>" alt="<?= $category->getName() ?>">
+                                            </div>
+                                            <span class="category-ttl color-white-green fs-18px txt-center"><?= $category->getName() ?></span>
+                                        </a>
+                                    <?php endforeach; ?>
+                                    <!-- button collapse -->
+                                    <?php if(count($subCategories) > 4): ?>
+                                        <div class="button-collapse"></div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="index-bottom">
+                        <a class="index-card" href="<?= $block->getUrl('meal/plan') ?>">
+                            <div class="index-card-content">
+                                <div class="index-card-content-img">
+                                    <img src="<?= $helper->getMediaBaseUrl() .'healthlab_product_catalog/'. $helper->contentBannerRightImage() ?>" alt="tailored">
+                                </div>
+                                <div class="index-card-content-ttl">
+                                    <h5 class="fs-35px color-white-green milano-medium">
+                                        <?= $helper->contentBannerRightTitle() ?>
+                                    </h5>
+                                    <p class="des fs-20px color-green milano-medium">
+                                        <?= $helper->contentBannerRightDescription() ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a class="index-card" href="<?= $block->getUrl('insights/view') ?>">
+                            <div class="index-card-content">
+                                <div class="index-card-content-img">
+                                    <img src="<?= $helper->getMediaBaseUrl() .'healthlab_product_catalog/'. $helper->contentBannerLeftImage() ?>" alt="insight">
+                                </div>
+                                <div class="index-card-content-ttl">
+                                    <h5 class="fs-35px color-white-green milano-medium">
+                                        <?= $helper->contentBannerLeftTitle() ?>
+                                    </h5>
+                                    <p class="des fs-20px color-green milano-medium">
+                                        <?= $helper->contentBannerLeftDescription() ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Annam_ProductCatalog/js/search-options": {
+                "url": "<?= $block->getBaseUrl() . 'healthlab_category/ajax/options' ?>"
+            },
+            "Annam_ProductCatalog/js/collapse-category-list": {}
+        }
+    }
+</script>

@@ -1,0 +1,66 @@
+<?php $helper = $this->helper('Annam\HealthLab\Helper\Data'); ?>
+
+<div class="healthlab__body">
+    <div class="healthlab__banner">
+        <div class="healthlab__banner-background">
+            <img src="<?= $helper->getMediaBaseUrl() .'healthlab_meal_plan/'.$helper->mealPlanImage() ?>" alt="banner-meal-plan" />
+        </div>
+
+        <div class="healthlab__banner-content__mealplan">
+            <div class="container-content" style="width: 100%;">
+                <div class="ttl-lg">
+                    <h2><?= __($helper->mealPlanTitle()) ?></h2>
+                </div>
+                <div class="ttl-sm">
+                    <h3><?= __($helper->mealPlanDescription()) ?></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="healthlab__mealplan">
+        <div class="container-content">
+            <div class="healthlab__mealplan-list">
+                <?php if(count($block->getMeals())): ?>
+                    <?php foreach ($block->getMeals() ?? [] as $meal): ?>
+                        <?php if($helper->isShowPerStore($block->serializer()->unserialize($meal->getStore()))): ?>
+                            <div class="mealplan collapsed">
+                                <div class="mealplan-header">
+                                    <div class="mealplan-header-banner">
+                                        <?php if(!is_null($meal->getImage())): ?>
+                                            <?php $img = $block->getImg($meal->getImage()); ?>
+                                            <img src="<?= $img[0]['url'] ?>" alt="<?= $meal->getName() ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="mealplan-header-title">
+                                        <h3 class="fs-35px color-green milano-bold text-uppercase"><?= $meal->getName() ?></h3>
+                                        <button class="mealplan-collapse-toggle">
+                                            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/product-icon/owl-next.svg')) ?>" alt="collapse-icon">
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mealplan-content">
+                                    <div><?= json_decode($meal->getContent()) ?></div>
+                                    <div class="mealplan-content-explore">
+                                        <a class="mealplan-explore fs-22px color-white-green text-uppercase"
+                                        href="<?= $block->getUrl('meal/plan/view',['id' => $meal->getId()])?>">
+                                            <?= __('explore') .' '.$meal->getName().' '. __('eating plan')?>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require(["jquery"],function($, modal) {
+        $(document).on('click', '.mealplan-header', function() {
+            const _this = $(this);
+            _this.closest('.mealplan').toggleClass('collapsed'); // Toggle collapsed class on the closest .mealplan element
+        });
+    });
+</script>

@@ -1,0 +1,45 @@
+<?php $helper = $this->helper('Annam\HealthLab\Helper\Data'); ?>
+
+<div class="healthlab__body">
+    <div class="healthlab__banner">
+        <div class="healthlab__banner-background">
+            <img src="<?= $helper->getMediaBaseUrl() .'healthlab_insight/'.$helper->insightImage() ?>" alt="insight-banner" />
+        </div>
+
+        <div class="healthlab__banner-content__insight">
+            <div class="container-content" style="width: 100%;">
+                <div class="ttl-lg">
+                    <h2><?= $helper->insightTitle() ?></h2>
+                </div>
+                <div class="ttl-sm">
+                    <h3><?= $helper->insightDescription() ?></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-content" style="height: calc(100% - 488px);">
+        <div class="insight-main auto-scroll-green-bar">
+            <?php if(count($block->getInsights())): ?>
+                <ul class="insight-list">
+                    <?php foreach ($block->getInsights() ?? [] as $insights): ?>
+                        <?php if($helper->isShowPerStore($block->serializer()->unserialize($insights->getStore()))): ?>
+                            <li>
+                                <a class="card" href="<?= $block->getUrl('insights/detail/index',['id' => $insights->getId()]) ?>">
+                                    <div class="card-image">
+                                        <?php if(!is_null($insights->getImage())) : ?>
+                                            <?php $img = $block->serializer()->unserialize($insights->getImage()); ?>
+                                            <img src="<?= $img[0]['url'] ?>" alt="<?= $insights->getName() ?>">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="card-content">
+                                        <h4 class="fs-35px color-green text-uppercase"><?= $insights->getName() ?></h4>
+                                    </div>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<?php
+$helper = $this->helper('Annam\HealthLab\Helper\Data');
+$searchByKeyword = $helper->searchByKeyword();
+$mealPlan = $helper->mealPlanAttribute();
+$infographic = $helper->getAttributeInfographic();
+$brand = $helper->brand();
+?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'uiRegistry'
+    ], function($,uiRegistry){
+        uiRegistry.get('index = <?= $searchByKeyword ?>', function (element) {
+            element.hide();
+        });
+
+        uiRegistry.get('index = <?= $mealPlan ?>', function (element) {
+            element.hide();
+        });
+
+        uiRegistry.get('index = <?= $infographic ?>', function (element) {
+            element.hide();
+        });
+
+        uiRegistry.get('index = <?= $brand ?>', function (element) {
+            element.hide();
+        });
+    })
+</script>

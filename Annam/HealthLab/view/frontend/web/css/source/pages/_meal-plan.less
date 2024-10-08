@@ -1,0 +1,367 @@
+.meal-plan-index,
+.meal-plan-view,
+.meal-plan-products,
+.meal-plan-product {
+    .healthlab {
+        .healthlab__banner {
+            &-background {
+                top: -30px;
+                right: -20px;
+                width: 411px;
+                height: 471px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                img{
+                    max-width: 100%;
+                    max-height: 100%;
+                    object-fit: contain;
+                }
+            }
+            &-content__mealplan {
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                padding-top: 73px;
+                z-index: 1;
+                height: 100%;
+
+                .ttl-lg h2 {
+                    font-size: 80px;
+                    font-family: @font-title;
+                    color: @color-light-green;
+                    line-height: 1;
+                    text-transform: uppercase;
+                    letter-spacing: -5px;
+                }
+
+                .ttl-sm h3 {
+                    font-family: @font-base-medium;
+                    font-size: 35px;
+                    color: @color-bold-green;
+                    line-height: 1;
+                    margin-top: 50px;
+                }
+            }
+        }
+
+        .healthlab__mealplan {
+            margin-top: 100px;
+            overflow: hidden;
+            .container-content{
+                overflow-y: auto;
+                height: 100%;
+                padding-bottom: 2rem;
+                &::-webkit-scrollbar {
+                    width: 7px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background: #34643B;
+                    border-radius : 50px;
+                    cursor: pointer;
+                }
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+                .healthlab__mealplan-list {
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 20px;
+                    .mealplan {
+                        border-radius: 20px;
+                        overflow: hidden;
+                        background: #dbc093;
+                        .mealplan-header {
+                            width: 100%;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            padding-right: 50px;
+                            background: #31663c;
+                            border-radius: 20px;
+                            height: 120px;
+                            cursor: pointer;
+                            &-banner {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                max-width: 300px;
+                                img {
+                                    max-width: 100%;
+                                    height: auto;
+                                    object-fit: contain;
+                                }
+                            }
+
+                            &-title {
+                                display: flex;
+                                column-gap: 50px;
+                                align-items: center;
+
+                                .mealplan-collapse-toggle {
+                                    background: none;
+                                    transform: rotate(90deg);
+                                    width: 24px;
+                                    height: 24px;
+                                    padding: 0;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    transition: all 0.2s linear;
+                                }
+                            }
+                        }
+
+                        .mealplan-content {
+                            padding: 50px 80px;
+                            &-explore {
+                                width: 100%;
+                                height: 40px;
+                                margin-top: 50px;
+                                display: flex;
+                                justify-content: center;
+
+                                .mealplan-explore {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    padding: 0px 30px;
+                                    border-radius: 50px;
+                                    background: #966f41;
+                                }
+                            }
+                        }
+                    }
+
+                    .collapsed{
+                        height: 120px;
+                        .mealplan-header-title {
+                            .mealplan-collapse-toggle {
+                                transform: rotate(-90deg) !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .healthlab__view-title{
+            width: 100%;
+            margin-top: 93px;
+            margin-bottom: 82px;
+            text-align: start;
+        }
+
+        .healthlab__view-body{
+            .color-light-green{
+                color : #7A8952 !important;
+            }
+
+
+            .healthlab__view-title {
+                 width: 100%;
+                 margin-top: 93px;
+                 margin-bottom: 82px;
+                 text-align: start;
+            }
+            .day-item .active{
+                display: none;
+            }
+            .day-item .inactive{
+                display: flex;
+            }
+            .day-active .active{
+                display: flex;
+                color : #F2EDD9;
+            }
+            .day-active .inactive{
+                display: none;
+            }
+            .list-day {
+                height: 40px;
+                display: grid;
+                grid-template-columns: repeat(7,1fr);
+                margin-bottom: 50px;
+                padding-left: 110px;
+            }
+            .list-day .day-wrapper{
+                position: relative;
+                width: 100%;
+                height: 40px;
+            }
+             .list-day .day-wrapper .day-item {
+                display: flex;
+                position: absolute;
+                width: 200%;
+                transform: translateX(-50%);
+                height: 40px;
+                border-radius: 50px;
+                border: 1px solid #ABC063;
+                background: #F2EDD9;
+                justify-content: flex-end;
+                align-items: center;
+                padding-right: 38px;
+                transition: all 0.2s linear;
+            }
+            .list-day .day-wrapper:first-child .day-item {
+                justify-content: center !important;
+                padding-right: 0px;
+            }
+            .day-active{
+                background: #ABC063 !important;
+                padding-right: 10px !important;
+            }
+            .tab-pill{
+                display:none;
+                padding: 30px;
+                border: 1px solid #ABC063;
+                border-bottom-left-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+            .tab-active{
+                display:block!important;
+            }
+            .list-meal{
+                display: grid;
+                height: 74px;
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .list-meal .meal-title{
+                width: 100%;
+                height: 74px;
+                border: 1px solid #ABC063;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-start;
+                padding: 10px 20px;
+                color :#ABC063;
+                font-size: 30px;
+                transition: all 0.2s linear;
+
+            }
+            .list-meal .meal-active{
+                background: #ABC063;
+                color: #F2EDD9 !important;
+            }
+            .dish {
+                display: flex;
+                gap: 30px;
+                height: 280px;
+                .dish-thumb{
+                    min-width: 280px;
+                    height: 280px;
+                    border-radius: 20px;
+                    background: #966F411A;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img{
+                        max-width: 100%;
+                        max-height: 100%;
+                        object-fit: contain;
+                    }
+                }
+                .dish-detail {
+                    display: flex;
+                    width: 100%;
+                    flex-direction: column;
+                    row-gap: 10px;
+                    justify-content: space-between;
+
+                    .dish-short-content{
+                        // height: 100%;
+                        overflow-y: auto;
+                        &::-webkit-scrollbar {
+                            width: 7px;
+                        }
+                        &::-webkit-scrollbar-thumb {
+                            background: #ABC063;
+                            border-radius : 50px;
+                            cursor: pointer;
+                        }
+                        &::-webkit-scrollbar-track {
+                            background: transparent;
+                        }
+                    }
+
+                    .box-btn{
+                        display: flex;
+                        gap: 10px;
+                        height: 40px;
+                        justify-content: flex-start;
+                        @media screen and (max-width: 991px){
+                            flex-direction: column;
+                            a, button {
+                                width: 100%;
+                            }
+                        }
+                        a, button {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 40px;
+                            padding: 7px 20px;
+                            border: 1px solid #966F41 !important;
+                            border-radius: 50px;
+                            color: #966F41 !important;
+                            background: none;
+                            font-size: 22px !important;
+                            text-transform: none;
+                            transition: all 0.2s linear;
+                            white-space: nowrap;
+                            // width: 50%;
+                            &:hover{
+                                color: #F2EDD9 !important;
+                                background: #966F41;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .dish-content{
+                margin-top: 50px;
+                min-height: 100px;
+                max-height: 640px;
+                overflow-y: auto;
+                &::-webkit-scrollbar {
+                    width: 7px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background: #ABC063;
+                    border-radius : 50px;
+                    cursor: pointer;
+                }
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+            }
+        }
+
+        .box-list-options{
+            display: flex;
+            gap: 15px;
+            height: 40px;
+            align-items: center;
+            margin-top: 30px;
+
+            #dish-list-options{
+                width: 200px;
+                height: 40px;
+                background: #ABC063;
+                color: #F2EDD9;
+                font-size: 22px;
+                border-radius: 50px;
+                text-align: start;
+                line-height: 1;
+                padding-left: 15px;
+            }
+        }
+
+    }
+}

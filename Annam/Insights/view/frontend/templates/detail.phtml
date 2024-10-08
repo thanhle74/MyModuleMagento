@@ -1,0 +1,66 @@
+<div class="healthlab__body">
+    <?php if (!is_null($block->getParamId())): ?>
+        <?php foreach ($block->getInsightsById((int) $block->getParamId()) ?? [] as $insights): ?>
+
+            <div class="healthlab__banner">
+                <div class="healthlab__banner-insight__background">
+                    <?php if(!is_null($insights->getImage())) : ?>
+                        <?php $img = $block->serializer()->unserialize($insights->getImage()) ?>
+                        <img src="<?= $img[0]['url'] ?>" alt="<?= $insights->getName() ?>">
+                    <?php endif; ?>
+                </div>
+
+                <div class="healthlab__banner-content__insight align-center">
+                    <div class="container-content">
+                        <div class="ttl-lg">
+                            <h2><?= $insights->getName() ?></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-content container-content">
+
+                <div class="mgb-30">
+                    <h3 class="fs-35px color-mid-brown mgb-20"><?= __('Definition')?></h3>
+                    <div class="fs-22px color-mid-brown">
+                        <?php if(!is_null($insights->getDefinition())) : ?>
+                            <?= $block->serializer()->unserialize($insights->getDefinition()) ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <div class="mgb-30">
+                    <h3 class="fs-35px color-mid-brown mgb-20"><?= __('Benefits')?></h3>
+                    <div class="fs-22px color-mid-brown">
+                        <?php if(!is_null($insights->getBenefits())) : ?>
+                            <?= $block->serializer()->unserialize($insights->getBenefits()) ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <ul class="insights-ingredients">
+                    <?php if (!is_null($insights->getInfographicIngredients())): ?>
+                        <?php $insightsIngredients = $block->serializer()->unserialize($insights->getInfographicIngredients()); ?>
+                        <?php foreach ($insightsIngredients['infographic_ingredients'] ?? [] as $ingredients): ?>
+                            <?php $ingredients = $block->getIngredientsById((int) $ingredients['value'])  ?>
+                            <?php foreach ($ingredients ?? [] as $item): ?>
+                                <?php if(!is_null($item->getImage())) : ?>
+                                    <?php $img = $block->serializer()->unserialize($item->getImage()) ?>
+                                <?php endif; ?>
+                                <li>
+                                    <a href="<?= $block->getUrl('ingredients/detail/index',['id' => $item->getId()]) ?>">
+                                        <div class="card-img">
+                                            <img src="<?= $img[0]['url'] ?? '' ?>" alt="<?= $item->getName() ?>">
+                                        </div>
+                                        <h5 class="fs-18px color-white-green"><?= $item->getName() ?></h5>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Annam_HealthLab::healthlab" title="HealthLab" module="Annam_HealthLab" sortOrder="51" resource="Annam_HealthLab::explore"/>
+        <add id="Annam_MealPlan::meal_page" title="Meal Plan Page" module="Annam_HealthLab" sortOrder="10" resource="Annam_HealthLab::explore_page" parent="Annam_HealthLab::healthlab"/>
+            <add id="Annam_MealPlan::meal_plan" title="Meal Plan" module="Annam_MealPlan" sortOrder="10"
+                 action="meal/plan" resource="Annam_MealPlan::meal_plan" parent="Annam_MealPlan::meal_page"/>
+            <add id="Annam_Dish::dish" title="Dish" module="Annam_Dish" sortOrder="20"
+                 action="dish/view" resource="Annam_HealthLab::dish" parent="Annam_MealPlan::meal_page"/>
+        <add id="Annam_HealthLab::health_insights" title="Health Insights" module="Annam_HealthLab" sortOrder="20" resource="Annam_HealthLab::healthlab" parent="Annam_HealthLab::healthlab"/>
+            <add id="Annam_Insights::insights" title="Insights" module="Annam_HealthLab"
+                 sortOrder="10" action="insights/view" resource="Annam_HealthLab::health_insights" parent="Annam_HealthLab::health_insights"/>
+            <add id="Annam_Ingredients::ingredients" title="ingredients" module="Annam_HealthLab"
+                 sortOrder="20" action="ingredients/view" resource="Annam_HealthLab::ingredients" parent="Annam_HealthLab::health_insights"/>
+            <add id="Annam_Ingredient::ingredient" title="Ingredient" module="Annam_Ingredient"
+                 sortOrder="30" action="ingredient/view" resource="Annam_Ingredient::ingredient" parent="Annam_HealthLab::health_insights"/>
+
+        <add id="Annam_Import::import" title="Import" module="Annam_Import" sortOrder="70" parent="Annam_HealthLab::healthlab" action="healthlab_import/detail" resource="Annam_Mapping::mapping_url"/>
+        <add id="Annam_Mapping::mapping_url" title="Mapping Url" module="Annam_Mapping" sortOrder="80" parent="Annam_HealthLab::healthlab" action="healthlab_mapping/url/index" resource="Annam_Mapping::mapping_url"/>
+        <add id="Annam_HealthLab::healthlab_configuration" title="Configuration" module="Annam_HealthLab" sortOrder="99" parent="Annam_HealthLab::healthlab" action="adminhtml/system_config/edit/section/healthlab_general" resource="Annam_HealthLab::healthlab_configuration"/>
+    </menu>
+</config>

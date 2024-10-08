@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="healthlab" translate="label" sortOrder="100">
+            <label>HealthLab</label>
+        </tab>
+        <section id="healthlab_insight" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Health Insights</label>
+            <tab>healthlab</tab>
+            <resource>Annam_HealthLab::config</resource>
+            <group id="attribute" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Health Insights</label>
+                <field id="insight" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Attribute Code</label>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Title</label>
+                </field>
+                <field id="des" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Description</label>
+                </field>
+                <field id="image" translate="label" type="image" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">healthlab_insight</upload_dir>
+                    <base_url type="media" scope_info="1">healthlab_insight</base_url>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

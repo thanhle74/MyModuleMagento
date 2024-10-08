@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="AnnamMealPlanFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AnnamMealPlanFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Annam\MealPlan\Model\ResourceModel\Meal\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">AnnamMealPlanFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Annam\MealPlan\Model\ResourceModel\Meal\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">healthlab_meal_plan</argument>
+            <argument name="eventPrefix" xsi:type="string">healthlab_meal_plan_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">meal_plan_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Annam\MealPlan\Model\ResourceModel\Meal</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="annam_healthlab_meal_plan_listing_data_source" xsi:type="string">Annam\MealPlan\Model\ResourceModel\Meal\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Annam\HealthLab\Ui\Component\MassAction\Status\Options">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="urlPath" xsi:type="string">*/*/massStatus</item>
+                <item name="paramName" xsi:type="string">status</item>
+                <item name="confirm" xsi:type="array">
+                    <item name="title" xsi:type="string" translatable="true">Change Status</item>
+                    <item name="message" xsi:type="string" translatable="true">Are you sure to change selected record status?</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="Annam\MealPlan\Api\MealInterface" type="Annam\MealPlan\Model\Meal" />
+    <preference for="Annam\MealPlan\Api\MealRepositoryInterface" type="Annam\MealPlan\Model\MealRepository" />
+</config>

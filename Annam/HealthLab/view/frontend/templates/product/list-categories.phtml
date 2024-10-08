@@ -1,0 +1,30 @@
+<?php
+$helper = $this->helper('Annam\HealthLab\Helper\Data');
+?>
+<div class="product__content-bottom-category">
+    <div class="fs-22px milano-bold color-brown"><?php echo __('See more products in:') ?></div>
+    <div class="product-category-more">
+        <?php
+        $url = '';
+        if(!empty($helper->mainCategory()))
+        {
+            $idMainCategories = (int)$helper->mainCategory();
+            $url = $helper->getCategoryUrlById($idMainCategories);
+        }
+        ?>
+        <a href="<?= $url ?>" class="product-category-more-item">
+            <?php echo __('Category') ?>
+        </a>
+        <?php
+        $url = '';
+        if(!empty($helper->concernsCategory()))
+        {
+            $idHealthConcerns = (int)$helper->concernsCategory();
+            $url = $helper->getCategoryUrlById($idHealthConcerns);
+        }
+        ?>
+        <a href="<?= $url ?>" class="product-category-more-item">
+            <?= __('Health Concerns') ?>
+        </a>
+    </div>
+</div>

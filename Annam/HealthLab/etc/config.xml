@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <healthlab_general>
+            <footer>
+                <text>download &lt;br/&gt; our apps</text>
+                <email>customerservice@annam-gourmet.com</email>
+                <phone>1900 63 64 31</phone>
+            </footer>
+            <healthlab_brand>
+                <brand>healthlab_brand</brand>
+            </healthlab_brand>
+            <no_result>
+                <text>The product you are looking for is not on the list recommended &lt;br/&gt; by Annam Gourmet's nutrition experts</text>
+            </no_result>
+        </healthlab_general>
+    </default>
+</config>

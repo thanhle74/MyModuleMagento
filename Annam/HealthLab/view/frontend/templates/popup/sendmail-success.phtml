@@ -1,0 +1,30 @@
+<div id="sendmail-success-modal" class="modal-success">
+    <div class="modal-body-content-success">
+        <h3 class="fs-50px hvdtrial color-brown"><?= $block->escapeHtml(__('information sent')) ?></h3>
+        <h4 class="fs-30px milano-medium color-brown"><?= $block->escapeHtml(__('Please check your inbox')) ?></h4>
+        <div class="thumb-success-wrapper">
+            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/icon-email-send.svg')) ?>" alt="icon-email-send.svg">
+        </div>
+        <div class="button-success-close">
+            <button class="ajax-close-success-modal">
+                <?= __('OK')?>
+            </button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ],function($, modal) {
+        $(document).ready(function (){
+            let options = {
+                type: 'popup',
+                modalClass: 'modal-success-wrapper',
+                responsive: true,
+            };
+
+            let popup = modal(options, $('#sendmail-success-modal'));
+        });
+    });
+</script>

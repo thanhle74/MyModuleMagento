@@ -1,0 +1,104 @@
+
+<?php $helper = $this->helper('Annam\HealthLab\Helper\Data'); ?>
+<div class="healthlab__footer">
+        <div class="container-wrapper container-content">
+            <div class="container-wrapper-row">
+                <div class="healthlab__footer-qr">
+                    <div class="healthlab__footer-qr-img">
+                        <img src="<?= $helper->getMediaBaseUrl() .'healthlab_qr/'. $helper->footerQRImage() ?>" alt="qr-code" />
+                    </div>
+                    <div class="healthlab__footer-qr-txt milano-medium">
+                        <p><?= $helper->footerQRText() ?></p>
+                    </div>
+                </div>
+
+                <div class="healthlab__footer-contact">
+                    <h5 class="ttl"><?= __('contact') ?></h5>
+                    <ul class="contact-lst">
+                        <li><a href="#"><?= $helper->emailAddress() ?></a></li>
+                        <li><a href="#"><?= $helper->phoneNumber() ?></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="healthlab__footer-button">
+                <div class="healthlab__footer-button-print">
+                    <button class="healthlab-icon-circle bg-print-enabled" onclick="window.print()">
+                        <i>
+                            <svg width="38" height="36" viewBox="0 0 38 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M33.2577 12.6498H29.8277V1.83982C29.8277 1.26982 29.3677 0.819824 28.8077 0.819824H9.47768C8.90768 0.819824 8.45768 1.27982 8.45768 1.83982V12.6498H5.01768C2.73768 12.6498 0.867676 14.5198 0.867676 16.8098V27.7898C0.867676 30.0798 2.73768 31.9498 5.01768 31.9498H8.26768V34.5198C8.26768 35.0898 8.72768 35.5398 9.28768 35.5398H28.9977C29.5677 35.5398 30.0177 35.0798 30.0177 34.5198V31.9498H33.2477C35.5377 31.9498 37.4077 30.0798 37.4077 27.7898V16.8098C37.4077 14.5198 35.5377 12.6498 33.2477 12.6498H33.2577ZM10.5077 2.85982H27.7877V12.6498H10.5077V2.85982ZM27.9777 33.4998H10.2977V22.6098H27.9777V33.4998ZM35.3777 27.7898C35.3777 28.9598 34.4377 29.8998 33.2677 29.8998H30.0377V21.5798C30.0377 21.0098 29.5777 20.5598 29.0177 20.5598H9.30768C8.73768 20.5598 8.28768 21.0198 8.28768 21.5798V29.8998H5.03768C3.87768 29.8998 2.93768 28.9598 2.93768 27.7898V19.5198H35.3977V27.7898H35.3777ZM35.3777 17.4898H2.91768V16.8098C2.91768 15.6398 3.85768 14.6998 5.01768 14.6998H33.2577C34.4377 14.6998 35.3677 15.6398 35.3677 16.8098V17.4898H35.3777Z" fill="#966F41"/>
+                            </svg>
+                        </i>
+                    </button>
+                    <button class="healthlab-icon-circle bg-disabled bg-print-disabled">
+                        <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/button-icon/print-off-icon.svg')) ?>" alt="slogan-lg" />
+                    </button>
+                </div>
+
+                <div class="healthlab__footer-button-email">
+                    <button class="healthlab-icon-circle bg-email-enabled">
+                        <i>
+                            <svg width="31" height="22" viewBox="0 0 31 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.347656 20.8801C0.347656 21.1701 0.467656 21.4501 0.667656 21.6501C0.877656 21.8601 1.14766 21.9701 1.43766 21.9701L29.5577 21.9901C29.6477 21.9901 29.7277 21.9801 29.8077 21.9601C30.2877 21.8501 30.6477 21.4101 30.6477 20.8901V1.48012C30.6577 1.19012 30.5477 0.910115 30.3377 0.710115C30.1277 0.500115 29.8577 0.390116 29.5677 0.390116L1.44766 0.370117C1.15766 0.370117 0.877656 0.480117 0.677656 0.690117C0.467656 0.900117 0.357656 1.17012 0.357656 1.46012V20.8701L0.347656 20.8801ZM2.54766 3.97012L6.48766 7.62012L2.54766 11.3401V3.97012ZM28.4777 11.3601L24.5377 7.63012L28.4777 3.99012V11.3601ZM15.5077 13.0001L4.24766 2.57012L26.7777 2.59012L15.5077 13.0101V13.0001ZM2.53765 19.7801V14.3601L8.09766 9.11012L14.7677 15.2901C15.0477 15.5501 15.4177 15.6301 15.7677 15.5501C15.9477 15.5101 16.1177 15.4201 16.2577 15.2901L22.9377 9.12012L28.4877 14.3801V19.8001L2.55766 19.7801H2.53765Z" fill="#966F41"/>
+                            </svg>
+                        </i>
+                    </button>
+                    <button class="healthlab-icon-circle bg-disabled bg-email-disabled">
+                        <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/button-icon/email-icon.svg')) ?>" alt="slogan-lg" />
+                    </button>
+                </div>
+
+                <div class="healthlab__footer-button-language">
+                    <?php
+                        /**
+                         * Language switcher template
+                         */
+                        $currentStoreCodeArr = explode('_', $block->getCurrentStoreCode());
+                        $codeLang = $currentStoreCodeArr[1];
+                    ?>
+
+                    <?php if (count($block->getStores()) > 1):
+                        $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+                        <div class="switcher language switcher-language" data-ui-id="language-switcher" id="switcher-language<?php echo $id ?>">
+                            <div class="actions dropdown options switcher-options">
+                                <div class="action toggle switcher-trigger" id="switcher-language-trigger<?php echo $id ?>">
+                                    <strong class="view-<?php echo $block->escapeHtml($codeLang) ?>">
+                                        <span><?php echo $block->escapeHtml($codeLang) ?></span>
+                                    </strong>
+                                </div>
+                                <ul class="dropdown switcher-dropdown"
+                                    data-mage-init='{"dropdownDialog":{
+                                        "appendTo":"#switcher-language<?php echo $id ?> > .options",
+                                        "triggerTarget":"#switcher-language-trigger<?php echo $id ?>",
+                                        "closeOnMouseLeave": false,
+                                        "triggerClass":"active",
+                                        "parentClass":"active",
+                                        "buttons":null}}'>
+                                    <?php foreach ($block->getStores() as $_lang): ?>
+                                        <?php if ($_lang->getId() != $block->getCurrentStoreId()): ?>
+                                            <li class="view-<?php echo $block->escapeHtml($_lang->getCode()); ?> switcher-option">
+                                                <a href="#" data-post='<?= /* @noEscape */ $block->getTargetStorePostData($_lang) ?>'>
+                                                    <?php
+                                                        $storeCodeArr = explode('_', $_lang->getCode());
+                                                        echo $storeCodeArr[1];
+                                                    ?>
+                                                </a>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+    	"*": {
+            "Annam_HealthLab/js/icon-custom": {}
+    	}
+    }
+</script>

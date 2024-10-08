@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="healthlab" translate="label" sortOrder="100">
+            <label>HealthLab</label>
+        </tab>
+        <section id="healthlab_general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>General</label>
+            <tab>healthlab</tab>
+            <resource>Annam_HealthLab::config</resource>
+            <group id="header" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label>
+                <field id="logo" translate="label" type="image" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">healthlab_logo</upload_dir>
+                    <base_url type="media" scope_info="1">healthlab_logo</base_url>
+                </field>
+            </group>
+            <group id="footer" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer</label>
+                <field id="text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Text QR</label>
+                </field>
+                <field id="image" translate="label" type="image" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>QR Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">healthlab_qr</upload_dir>
+                    <base_url type="media" scope_info="1">healthlab_qr</base_url>
+                </field>
+                <field id="email" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Email</label>
+                </field>
+                <field id="phone" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Phone</label>
+                </field>
+            </group>
+            <group id="healthlab_brand" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Healthlab Brand</label>
+                <field id="brand" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Brand</label>
+                </field>
+            </group>
+            <group id="no_result" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>No result</label>
+                <field id="text" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Text</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

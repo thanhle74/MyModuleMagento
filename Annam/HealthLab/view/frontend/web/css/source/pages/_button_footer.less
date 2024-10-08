@@ -1,0 +1,148 @@
+.healthlab__footer-button{
+    &-language{
+        .switcher-options{
+            display: flex;
+            gap: 10px;
+            .switcher-trigger{
+                width: 62px;
+                height: 62px;
+                background: @color-brown;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: @color-brown;
+                font-family: @font-base-bold;
+                .border-radius(50%);
+                strong {
+                    span{
+                        font-size: 22px;
+                        text-transform: uppercase;
+                        color: @color-white !important;
+                        font-family: @font-base-bold;
+                    }
+                }
+            }
+
+            .mage-dropdown-dialog{
+                position: unset;
+                min-width: unset;
+                display: block !important;
+                z-index: 1;
+                padding: 0;
+                background: unset;
+                box-shadow: unset;
+                ul {
+                    li {
+                        a {
+                            font-size: 22px;
+                            text-transform: uppercase;
+                            color: @color-brown !important;
+                            width: 62px;
+                            height: 62px;
+                            display: flex !important;
+                            align-items: center;
+                            justify-content: center;
+                            background: @color-white;
+                            border: 1px solid @color-brown;
+                            font-family: @font-base-bold;
+                            .border-radius(50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.healthlab-index-index{
+    .back-home-group *{
+        display: none;
+    }
+}
+//DISABLED BUTTON PRINT
+.healthlab-index-index{
+    .bg-print-disabled{
+        display: flex;
+        border:unset;
+        cursor: none;
+    }
+    .bg-print-enabled{
+        display: none !important;
+    }
+
+}
+
+//DISABLED BUTTON EMAIL
+.healthlab-index-index{
+    .bg-email-disabled{
+        display: flex;
+        border:unset;
+        cursor: none;
+    }
+    .bg-email-enabled{
+        display: none !important;
+    }
+
+}
+
+//ENABLED BUTTON PRINT
+.healthlab_category-product-view,
+.healthlab_category-products-view,
+.meal-plan-index,
+.meal-plan-view,
+.meal-plan-products,
+.meal-plan-product,
+.insights-view-index,
+.insights-detail-index,
+.ingredients-detail-index,
+.ingredient-detail-index,
+.ingredient-detail-product,
+.healthlab_search-results-view,
+.healthlab_search-product-view
+{
+    .bg-print-disabled{
+        display: none !important;
+    }
+    .bg-print-enabled{
+        display: flex;
+        background-color: @color-white !important;
+        transition: all 0.4s linear;
+        &:hover{
+            background-color:@color-brown !important;
+            i svg path{
+                fill: #F2EDD9 !important;
+            }
+        }
+    }
+}
+
+//ENABLED BUTTON EMAIL
+.healthlab_category-product-view,
+.healthlab_category-products-view,
+.meal-plan-index,
+.meal-plan-view,
+.meal-plan-products,
+.meal-plan-product,
+.insights-view-index,
+.insights-detail-index,
+.ingredients-detail-index,
+.ingredient-detail-index,
+.ingredient-detail-product,
+.healthlab_search-results-view,
+.healthlab_search-product-view
+{
+    .bg-email-disabled{
+        display: none !important;
+    }
+    .bg-email-enabled{
+        display: flex;
+        background-color: @color-white !important;
+        transition: all 0.4s linear;
+        &:hover{
+            background-color:@color-brown !important;
+            i svg path{
+                fill: #F2EDD9 !important;
+            }
+        }
+    }
+}

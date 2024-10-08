@@ -1,0 +1,63 @@
+<div id="modal-login-wishlist" style="width: 100%;">
+    <div class="container-modal">
+        <form class="form" id="custom-form" method="post" data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <legend><?= __('Email or phone number') ?></legend>
+                <div class="field name required">
+                    <label class="label" for="username"><?= __('Email or phone number') ?></label>
+                    <div class="control">
+                        <input name="username" id="username" title="username" value="" type="text" class="input-text required-entry"/>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <legend><?= __('Password') ?></legend>
+                <div class="field name required">
+                    <label class="label" for="password"><?= __('Password') ?></label>
+                    <div class="control">
+                        <input name="password" id="password" title="password" value="" type="password" class="input-text required-entry"/>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="actions-toolbar login-footer">
+                <div class="primary">
+                    <button id="submit-create" type="button" title="Create" class="action submit primary">
+                        <?php echo __('Create an account'); ?>
+                    </button>
+                </div>
+                <div class="primary">
+                    <button id="submit-button" type="button" title="Submit" class="action submit primary">
+                        <?php echo __('Sign in'); ?>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div id="error-message" style="display:none; color:red;"></div>
+    </div>
+</div>
+
+<div id="modal-success" class="modal-success">
+    <div class="modal-body-content-success">
+        <h3 class="fs-50px hvdtrial color-brown"><?= __('successful') ?></h3>
+        <h4 class="fs-30px milano-medium color-brown"><?= __("Let's have a healthier life") ?></h4>
+        <div class="thumb-success-wrapper">
+            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/icon-success.svg')) ?>" alt="icon-success.svg">
+        </div>
+        <div class="button-success-close">
+            <button class="ajax-close-success-modal">
+                <?= __('OK')?>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+    	"*": {
+    		"Annam_HealthLab/js/login": {
+    			"url": "<?= $block->getFormAction(); ?>"
+            }
+        }
+    }
+</script>

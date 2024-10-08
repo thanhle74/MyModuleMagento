@@ -1,0 +1,47 @@
+<?php
+/**
+ * $block Annam\HealthLab\Block\Menu
+ */
+?>
+<div class="healthlab-menu">
+    <div class="container-menu">
+        <div class="healthlab-menu-l"></div>
+        <div class="healthlab-menu-main">
+            <div class="healthlab-header header-menu">
+                <div class="healthlab-header-box"><span></span></div>
+            </div>
+            <ul class="healthlab-menu-list auto-scroll-green-bar">
+                <?php foreach ($block->listSubMainHealthLabCategories() as $category): ?>
+                    <li class="healthlab-menu-item">
+                        <a href="javascript:void(0)"><?= $category->getName() ?></a>
+                        <?php foreach ($block->getSubcategories($category->getId()) ?? [] as $subCategory): ?>
+                            <ul class="healthlab-menu-item-lst">
+                                <li><a href=""><?= $subCategory->getName() ?></a></li>
+                            </ul>
+                        <?php endforeach; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    require(['jquery'], function($) {
+        $(document).ready(function() {
+            $('.healthlab-header-icon-menu').click(function (){
+                $('.healthlab-menu').toggleClass('active');
+                $('body').addClass('no-scroll');
+            });
+
+            $('.healthlab-menu-item').click(function (){
+                $(this).toggleClass('active');
+                $(this).find('.healthlab-menu-item-lst').toggleClass('active');
+            });
+
+            $('.healthlab-menu .healthlab-header-box span').click(function (){
+                $('.healthlab-menu').toggleClass('active');
+                $('body').removeClass('no-scroll');
+            });
+        });
+    });
+</script>

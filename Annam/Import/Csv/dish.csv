@@ -1,0 +1,17 @@
+No.,ID (update if exist),Name,SHORT CONTENT,LONG CONTENT,STATUS,IMAGE ,LINK EMBED YOUTUBE VIDEO,"PRODUCTS(sku,sku)"
+1,1,fruits layered with yogurt and muesli ,"<p><span style=""font-size: 22pt;""><strong>number of servings: 1</strong></span></p>
+<p><span style=""font-size: 22pt;""><strong>Nutritional values per serving:</strong></span></p>
+<p><span style=""font-size: 20pt;"">Calories: 324 | Fat: 8g | Carbohydrates: 42g | Fiber: 7.5g | Protein: 21g</span></p>
+<p><strong><span style=""font-size: 20pt;"">ingredients</span></strong></p>
+<ul>
+<li><span style=""font-size: 20pt;"">100 g of fruits (berries and 1 small banana,.. or optional fruits)<br></span></li>
+<li><span style=""font-size: 20pt;"">50 g muesli<br></span></li>
+<li><span style=""font-size: 20pt;"">150 g low-fat Greek yogurt</span></li>
+</ul>
+<p><strong><span style=""font-size: 20pt;"">ingredients</span></strong></p>
+<ul>
+<li><span style=""font-size: 20pt;"">100 g of fruits (berries and 1 small banana,.. or optional fruits)<br></span></li>
+<li><span style=""font-size: 20pt;"">50 g muesli<br></span></li>
+<li><span style=""font-size: 20pt;"">150 g low-fat Greek yogurt</span></li>
+</ul>         ","<p><span style=""font-size: 22pt;"">Product Description:</span></p>
+<p><span style=""font-size: 20pt;"">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</span></p>",1,demo,https://www.youtube.com/embed/abPmZCZZrFA?si=sz6t6gnabkjvdSoN,"B130344,B130490,B130454,B130282"

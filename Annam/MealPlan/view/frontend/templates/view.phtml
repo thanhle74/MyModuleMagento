@@ -1,0 +1,229 @@
+<?php
+    $array = [
+        1 => __('Breakfast'),
+        2 => __('Lunch'),
+        3 => __('Snack'),
+        4 => __('Dinner'),
+    ];
+?>
+
+<div class="healthlab__body">
+    <div class="healthlab__view-title">
+        <div class="container-content">
+            <h4 class="fs-55px color-bold-green"><?= $block->escapeHtml(__('Meal Plan')) ?></h4>
+            <?php $meal = $block->getMeal() ?>
+            <h3 class="fs-80px hvdtrial color-light-green"><?= $block->escapeHtml($meal->getName()) ?></h3>
+        </div>
+    </div>
+    <div class="healthlab__view-body">
+        <div class="container-content">
+            <?php if (!is_null($block->getParamId())): ?>
+                <div class="list-day">
+                    <div class="day-wrapper">
+                        <a class="day-item day-active" href="javascript:void(0)" style="z-index: 7;" data-slide="0">
+                            <span class="fs-22px active"><?php echo __('Day 01') ?></span>
+                            <span class="fs-22px inactive"><?php echo __('01') ?></span>
+                        </a>
+                    </div>
+                    <div class="day-wrapper">
+                        <a class="day-item" href="javascript:void(0)" style="z-index: 6;" data-slide="1">
+                            <span class="fs-22px active"><?php echo __('Day 02') ?></span>
+                            <span class="fs-22px inactive"><?php echo __('02') ?></span>
+                        </a>
+                    </div>
+                    <div class="day-wrapper">
+                        <a class="day-item" href="javascript:void(0)" style="z-index: 5;" data-slide="2">
+                            <span class="fs-22px active"><?php echo __('Day 03') ?></span>
+                            <span class="fs-22px inactive"><?php echo __('03') ?></span>
+                        </a>
+                    </div>
+                    <div class="day-wrapper">
+                        <a class="day-item" href="javascript:void(0)" style="z-index: 4;" data-slide="3">
+                            <span class="fs-22px active"><?php echo __('Day 04') ?></span>
+                            <span class="fs-22px inactive"><?php echo __('04') ?></span>
+                        </a>
+                    </div>
+                    <div class="day-wrapper">
+                        <a class="day-item" href="javascript:void(0)" style="z-index: 3;" data-slide="4">
+                            <span class="fs-22px active"><?php echo __('Day 05') ?></span>
+                            <span class="fs-22px inactive"><?php echo __('05') ?></span>
+                        </a>
+                    </div>
+                    <div class="day-wrapper">
+                        <a class="day-item" href="javascript:void(0)" style="z-index: 2;" data-slide="5">
+                            <span class="fs-22px active"><?php echo __('Day 06') ?></span>
+                            <span class="fs-22px inactive"><?php echo __('06') ?></span>
+                        </a>
+                    </div>
+                    <div class="day-wrapper">
+                        <a class="day-item" href="javascript:void(0)" style="z-index: 1;" data-slide="6">
+                            <span class="fs-22px active"><?php echo __('Day 07') ?></span>
+                            <span class="fs-22px inactive"><?php echo __('07') ?></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="owl-carousel owl-carousel-meal-plan">
+                    <?php for ($i = 1; $i <= 7; $i++): ?>
+                        <div class="item" id="item-day-<?= $i ?>">
+                            <?php $dayMethod = 'getDay' . $i; ?>
+                            <div class="item">
+                                <div class="item-main">
+                                    <div class="list-meal">
+                                        <?php for ($dayItem = 1; $dayItem <= 4; $dayItem++): ?>
+                                            <a class="meal-title <?php if($dayItem == 1) echo 'meal-active' ?> ajax-changetab"
+                                                href="javascript:void(0)"
+                                                data-tab="#tab-<?= $i.'-'.$dayItem ?>"
+                                                data-day="#item-day-<?= $i ?>"
+                                            >
+                                                <span><?= $array[$dayItem] ?></span>
+                                            </a>
+                                        <?php endfor; ?>
+                                    </div>
+                                    <div class="">
+                                        <?php if (!is_null($meal->$dayMethod())): ?>
+                                            <?php
+                                                $dayData = $block->convertJsonToArray($meal->$dayMethod());
+                                                $dayData = $dayData['list_dish'];
+                                            ?>
+                                            <?php foreach ($dayData as $day):?>
+                                                <?php if (isset($day['dish'])): ?>
+                                                    <?php $dish = $block->getDish($day['dish']);?>
+                                                    <div class="tab-pill <?php if($day['meals'] == 1) echo "tab-active" ?>"
+                                                         id="tab-<?= $i.'-'.$day['meals'] ?>">
+                                                        <div class="dish">
+                                                            <div class="dish-thumb">
+                                                                <?php if(!is_null($dish->getImage())): ?>
+                                                                    <?php $img = $block->convertJsonToArray($dish->getImage()); ?>
+                                                                    <img src="<?= $img[0]['url'] ?>" alt="<?= $dish->getName() ?>">
+                                                                <?php endif; ?>
+                                                            </div>
+                                                            <div class="dish-detail">
+                                                                <h2 class="fs-28px color-bold-green text-uppercase milano-bold"><?= $dish->getName() ?> </h2>
+
+                                                                <div class="dish-short-content">
+                                                                    <?= $block->convertJsonToArray($dish->getShortContent()) ?>
+                                                                </div>
+
+                                                                <div class="box-btn">
+                                                                    <button class="ajax-instruction-video" data-src="<?= $dish->getVideo() ?>" >
+                                                                        <?= __('Instruction Video') ?>
+                                                                    </button>
+                                                                    <a href="<?= $block->getUrl('meal/plan/products',['dish' => $dish->getId(), 'id' => $meal->getId()]) ?>">
+                                                                        <?= __('Recommended Product') ?>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dish-content">
+                                                            <div class="dish-long-content">
+                                                                <?= $block->convertJsonToArray($dish->getLongContent()) ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endfor; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
+<div id="healthlab-view-modal">
+    <div class="custom-header">
+        <div class="header-title">
+            <p class="fs-30px color-white"><?= $block->escapeHtml(__("Những thắc mắc của bạn")) ?></p>
+            <p class="fs-30px color-white"><?= $block->escapeHtml(__("sẽ được AGM'S Dietician giải đáp")) ?></p>
+        </div>
+        <button class="btn-mealplan-view-close">
+            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/icon-close.svg')) ?>" alt="icon-close.svg">
+        </button>
+    </div>
+
+    <div class="container-modal">
+        <form class="form" id="create-form" method="post" data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <div class="field view-firstname required">
+                    <label class="label" for="view-firstname"><span><?= __('Name') ?></span></label>
+                    <div class="control">
+                        <input name="view-firstname" id="view-firstname" title="view-firstname" value="" type="text" class="input-text required-entry" placeholder="<?= __('Name')?>"/>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="fieldset">
+                <div class="field view-email required">
+                    <label class="label" for="view-email"><span><?= __('Email') ?></span></label>
+                    <div class="control">
+                        <input name="view-email" id="view-email" title="view-email" value="" type="email" class="input-text required-entry" placeholder="<?= __('Email')?>"/>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="field view-text required" style="margin-bottom:20px;">
+                <p class="fs-20px color-brown"><?= __('Share your health considerations, target product, and any preferences for personalized recommendations. Our dieticians will contact you as soon as possible')?></p>
+            </div>
+
+            <fieldset class="fieldset">
+                <div class="field view-password required">
+                    <label class="label" for="view-note"><span><?= __('note') ?></span></label>
+                    <div class="control">
+                        <textarea placeholder="..." id="view-note" name="view-note" rows="4" cols="50" class="input-text required-entry"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="actions-toolbar full-width-footer">
+                <div class="primary">
+                    <button id="submit-button-view-service" type="button" title="Submit" class="action submit primary">
+                        <span><?php echo __('Submit'); ?></span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="view-error-message" style="display:none; color:red;"></div>
+        </form>
+    </div>
+</div>
+
+<div id="modal-dish" style="width: 100%;">
+    <div class="container-video-mealplan" style="width: 100%;">
+        <div class="frame-wrapper">
+            <iframe
+                width="864"
+                height="485.5"
+                src=""
+                title="AnnamGourmet"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+        </div>
+        <div class="footer-banner">
+            <div class="footer-warpper">
+                <div class="logo-wrapper">
+                    <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/meal-plan/annam-gourmet.svg')) ?>" alt="meal-plan/annam-gourmet.svg">
+                </div>
+                <div class="line"></div>
+                <div class="banner-content">
+                    <h4 class="fs-28px color-white"><?= __('DEMO ONLY')?></h4>
+                    <h5 class="fs-16px color-white"><?= __('to be replaced later by Branding video')?></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+    	"*": {
+            "Annam_MealPlan/js/meal-plan-view": {},
+            "Annam_MealPlan/js/video-introduction": {}
+    	}
+    }
+</script>

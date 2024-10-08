@@ -1,0 +1,19 @@
+{
+    "healthlab_dish": {
+        "column": {
+            "id": true,
+            "name": true,
+            "short_content": true,
+            "long_content": true,
+            "status": true,
+            "image": true,
+            "video": true,
+            "products": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

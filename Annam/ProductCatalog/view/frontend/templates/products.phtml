@@ -1,0 +1,105 @@
+<?php
+$helper = $this->helper('Annam\HealthLab\Helper\Data');
+$categoryId = (int)$helper->getParameterValue('id');
+$category = $block->getCategoryById($categoryId);
+$parentCategoryId = $category->getParentId();
+$parentCategory =  $block->getCategoryById($parentCategoryId)
+?>
+<div class="healthlab__body">
+    <div class="healthlab__banner">
+        <div class="healthlab__banner-background">
+            <img src="<?= $category->getImage() ?>" alt="<?= $category->getName() ?>" />
+        </div>
+
+        <div class="healthlab__banner-content__category">
+            <div class="container-content" style="width: 100%;">
+                <div class="ttl-sm">
+                    <h3><?= __($parentCategory->getName()) ?></h3>
+                </div>
+                <div class="ttl-lg">
+                    <h2><?= $category->getName() ?></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="healthlab__description">
+        <div class="container-content">
+            <div class="healthlab-category-description color-mid-brown"><?= $category->getDescription() ?></div>
+        </div>
+    </div>
+
+    <div class="healthlab__content">
+        <div class="container-content">
+            <div class="healthlab__filter">
+                <div class="row-filter-content">
+                    <div class="healthlab__toolbar-find">
+
+                        <div class="healthlab-category-search">
+                            <button class="index-search-btn" type="submit">
+                                <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/index-search.svg')) ?>" alt="icon-search">
+                            </button>
+                            <input
+                                class="c-text-input"
+                                type="text" value=""
+                                placeholder="<?= $block->escapeHtml(__("Enter keyword")) ?>"/>
+                        </div>
+
+                        <div class="healthlab-category-toolbar healthlab-filter-selection" style="position: relative;">
+                            <!-- <input class="overflow-input-selection" readonly type="text" value="<?= $block->escapeHtml(__("Product Name")) ?>"> -->
+                            <select id="healthlab-toolbar">
+                                <option value="name" selected="selected"><?= $block->escapeHtml(__("Product Name")) ?></option>
+                                <option value="price"><?= $block->escapeHtml(__("Price")) ?></option>
+                                <option value="weight"><?= $block->escapeHtml(__("Weight")) ?></option>
+                            </select>
+                            <img class="icon-select" src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/filter-icon/select-down-white.svg')) ?>" alt="icon-select">
+                        </div>
+
+                        <button class="healthlab-sort-by" data-value="asc">
+                            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/filter-icon/filter-asc.svg')) ?>" alt="asc-icon">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="healthlab-product-category auto-scroll-green-bar">
+                <ul id="healthlab-category-products" class="healthlab-product-list"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script type="text/javascript">
+    require(['jquery'], function($) {
+
+        $(document).ready(function () {
+            $(document).on('click',
+            `.healthlab-category-toolbar input,
+            .healthlab-category-toolbar .overflow-input-selection,
+            .healthlab-filter-selection input,
+            .healthlab-filter-selection .overflow-input-selection`, function(){
+                $('#healthlab-toolbar').focus() // focus this;
+                console.log("aaaa",$('#healthlab-toolbar').focus());
+            })
+        });
+
+        $(document).on('change', '#healthlab-toolbar',function(e){
+
+            $(`.healthlab-category-toolbar input,
+                .healthlab-category-toolbar .overflow-input-selection,
+                .healthlab-filter-selection input,
+                .healthlab-filter-selection .overflow-input-selection`).val(e.target.value);
+        })
+    });
+</script> -->
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Annam_ProductCatalog/js/products": {
+                "url": "<?= $block->getBaseUrl() . 'healthlab_category/ajax/products' ?>",
+                "id": <?= $categoryId ?>
+            }
+        }
+    }
+</script>

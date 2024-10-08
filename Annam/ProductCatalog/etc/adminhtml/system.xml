@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="healthlab_product_catalog" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Product Catalog</label>
+            <tab>healthlab</tab>
+            <resource>Annam_HealthLab::config</resource>
+            <group id="attribute" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Attribute</label>
+                <field id="search_by_keyword" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Search By Keyword</label>
+                    <comment>Ex: search_by_keyword</comment>
+                </field>
+            </group>
+            <group id="content" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Content</label>
+                <field id="title_sm" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Title Small</label>
+                </field>
+                <field id="title_lg" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Title Large</label>
+                </field>
+                <field id="description" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Description</label>
+                </field>
+                <field id="placeholder" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Placeholder</label>
+                </field>
+                <field id="input_example" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Input Example</label>
+                </field>
+                <field id="image" translate="label" type="image" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Image</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">healthlab_product_catalog</upload_dir>
+                    <base_url type="media" scope_info="1">healthlab_product_catalog</base_url>
+                </field>
+                <group id="banner_right" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banner Right</label>
+                    <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Title</label>
+                    </field>
+                    <field id="description" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Description</label>
+                    </field>
+                    <field id="image" translate="label" type="image" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Image</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                        <upload_dir config="system/filesystem/media" scope_info="1">healthlab_product_catalog</upload_dir>
+                        <base_url type="media" scope_info="1">healthlab_product_catalog</base_url>
+                    </field>
+                </group>
+                <group id="banner_left" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Banner Left</label>
+                    <field id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Title</label>
+                    </field>
+                    <field id="description" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                        <label>Description</label>
+                    </field>
+                    <field id="image" translate="label" type="image" sortOrder="135" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Image</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                        <upload_dir config="system/filesystem/media" scope_info="1">healthlab_product_catalog</upload_dir>
+                        <base_url type="media" scope_info="1">healthlab_product_catalog</base_url>
+                    </field>
+                </group>
+            </group>
+            <group id="category" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category</label>
+                <field id="select_category" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Category</label>
+                    <source_model>Annam\ProductCatalog\Model\Config\Source\Categories</source_model>
+                </field>
+                <field id="sub_main_categories" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Categories</label>
+                    <source_model>Annam\ProductCatalog\Model\Config\Source\SubCategories</source_model>
+                </field>
+                <field id="sub_health_concerns" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Health Concerns</label>
+                    <source_model>Annam\ProductCatalog\Model\Config\Source\SubCategories</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

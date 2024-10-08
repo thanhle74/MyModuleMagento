@@ -1,0 +1,48 @@
+<?php
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$helper = $this->helper('Annam\HealthLab\Helper\Data');
+?>
+<div class="product__relations">
+    <div class="product_relations-title">
+        <h3 class="fs-22px text-uppercase color-green milano-bold"><?= __('you may also like:') ?></h3>
+    </div>
+    <div class="owl-wrapper">
+        <div class="owl-carousel owl-carousel-relation">
+            <?php foreach ($block->getRelatedProducts() as $productCollection): ?>
+                <?php $productCollection = $block->getProduct($productCollection->getId()) ?>
+                <div class="item">
+                    <div class="healthlab-product-item">
+                        <a href="<?= $block->getUrl($block->getData('detail_url'), ['id' => $productCollection->getId()]) ?>">
+                            <div class="healthlab-product-img">
+                                <img src="<?= $block->getUrlImage($productCollection) ?>" alt='<?=  $productCollection->getName() ?>'>
+                            </div>
+                            <div class="d-flex-column-start">
+                                <h4 class="fs-16px color-bold-green milano-bold">
+                                    <?php
+                                        $options = $block->healthlabBrand($productCollection->getId());
+                                        $totalOptions = count($options);
+                                    ?>
+                                    <?php foreach ($options as $key => $optionId): ?>
+                                        <span><?= $block->attributeText((int) $optionId) ?><?= ($totalOptions > 1 && $key < $totalOptions - 1) ? ' -' : '' ?></span>
+                                    <?php endforeach; ?>
+                                </h4>
+                                <h3 class="fs-16px color-bold-green milano-medium text-over-ellipsis">
+                                    <?=  $productCollection->getName() ?>
+                                </h3>
+                                <div class="fs-20px color-bold-green milano-bold" style="line-height: 1;">
+                                    <?= $priceHelper->currency($productCollection->getPrice(), true, false) ?>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+        <div class="owl-prev">
+            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/product-icon/owl-next.svg')) ?>" alt="owl-prev">
+        </div>
+        <div class="owl-next">
+            <img src="<?= $block->escapeUrl($this->getViewFileUrl('Annam_HealthLab/images/product-icon/owl-next.svg')) ?>" alt="owl-next">
+        </div>
+    </div>
+</div>

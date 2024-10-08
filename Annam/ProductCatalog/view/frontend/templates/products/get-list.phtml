@@ -1,0 +1,30 @@
+<?php
+$products = $block->getData();
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+?>
+<?php if (count($products)) : ?>
+    <?php foreach ($products['data'] as $product) : ?>
+        <li class="healthlab-product-item">
+            <a href="<?= $block->getUrl('healthlab_category/product/view',['id' => $product['id']]) ?>">
+                <div class="healthlab-product-img">
+                    <img src="<?= $product['image'] ?>" alt='<?= $product['name'] ?>'>
+                </div>
+                <div class="d-flex-column-start">
+                    <h4 class="fs-16px color-bold-green milano-bold">
+                        <?php
+                        $options = $block->healthlabBrand($product['id']);
+                        $totalOptions = count($options);
+                        ?>
+                        <?php foreach ($options as $key => $optionId): ?>
+                            <span><?= $block->attributeText((int)$optionId) ?><?= ($totalOptions > 1 && $key < $totalOptions - 1) ? ' -' : '' ?></span>
+                        <?php endforeach; ?>
+                    </h4>
+                    <h3 class="fs-16px color-bold-green milano-medium text-over-ellipsis"> <?php echo $product['name'] ?></h3>
+                    <div class="fs-20px color-bold-green milano-bold" style="line-height: 1;">
+                        <?= $priceHelper->currency($product['price'], true, false) ?>
+                    </div>
+                </div>
+            </a>
+        </li>
+    <?php endforeach; ?>
+<?php endif; ?>
