@@ -1,0 +1,12 @@
+{
+    "cms_page": {
+        "column": {
+            "use_page_builder": true
+        }
+    },
+    "cms_block": {
+        "column": {
+            "use_page_builder": true
+        }
+    }
+}

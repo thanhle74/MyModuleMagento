@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Ui\Component\Form\Element\Wysiwyg" type="Forix\PageBuilderToggle\Component\Form\Element\Wysiwyg" />
+
+    <type name="Magento\Cms\Model\Page\DataProvider">
+        <plugin name="forix_page_builder_toggle_plugin" type="Forix\PageBuilderToggle\Plugin\CmsPageDataProviderPlugin"/>
+    </type>
+
+    <type name="Magento\Cms\Model\Block\DataProvider">
+        <plugin name="forix_block_page_builder_toggle_plugin" type="Forix\PageBuilderToggle\Plugin\CmsBlockDataProviderPlugin"/>
+    </type>
+
+    <type name="Magento\Catalog\Model\Category\DataProvider">
+        <plugin name="forix_category_page_builder_toggle_plugin" type="Forix\PageBuilderToggle\Plugin\CategoryDataProviderPlugin"/>
+    </type>
+
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider">
+        <plugin name="forix_remove_description_field" type="Forix\PageBuilderToggle\Plugin\ProductForm"/>
+    </type>
+
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider">
+        <plugin name="forix_description_product_data_plugin" type="Forix\PageBuilderToggle\Plugin\DescriptionProduct"/>
+    </type>
+</config>
