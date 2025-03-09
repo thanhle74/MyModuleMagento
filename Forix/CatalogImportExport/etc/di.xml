@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\CatalogImportExport\Model\Import\Product">
+        <plugin name="custom_import_export_plugin" type="Forix\CatalogImportExport\Plugin\RemoveOldImages"/>
+    </type>
+
+    <type name="Magento\Framework\File\Uploader">
+        <plugin name="custom_import_correct_filename_case" type="Forix\CatalogImportExport\Plugin\CorrectFileName"/>
+    </type>
+</config>

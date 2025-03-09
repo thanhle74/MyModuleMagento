@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/config.xsd">
+    <default>
+        <tttech>
+            <general>
+                <enable>1</enable>
+                <api_key>aaea9b0bbbf142e6948a522ccce8a9b1</api_key>
+                <secret>wBCzKzQgnX</secret>
+                <webshop>202</webshop>
+            </general>
+            <cron>
+                <cleanup_time_threshold>72</cleanup_time_threshold>
+                <cron_expression>0 */12 * * *</cron_expression>
+            </cron> 
+            <developer>
+                <enable>0</enable>
+                <num_loop>0</num_loop>
+                <specific_id>0</specific_id>
+            </developer>
+        </tttech>
+    </default>
+</config>

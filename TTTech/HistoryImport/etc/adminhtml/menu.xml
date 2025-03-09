@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="TTTech_HistoryImport::menu" title="TTT" module="TTTech_HistoryImport" sortOrder="11" resource="TTTech_HistoryImport::menu" />
+		<add id="TTTech_HistoryImport::import_management" title="Import Management" module="TTTech_HistoryImport" sortOrder="12" resource="TTTech_HistoryImport::files" parent="TTTech_HistoryImport::menu" />
+		<add id="TTTech_HistoryImport::history" title="History" module="TTTech_HistoryImport" sortOrder="10" action="tttech/history/index" resource="TTTech_HistoryImport::import" parent="TTTech_HistoryImport::import_management" />
+          
+        <add id="TTTech_HistoryImport::setting" title="Setting" module="TTTech_HistoryImport" sortOrder="20" resource="TTTech_HistoryImport::import_logs" action="admin/system_config/edit/section/tttech"  parent="TTTech_HistoryImport::menu" />
+	</menu>
+</config>

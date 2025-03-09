@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="importProduct" xsi:type="object">TTTech\Import\Console\Command\ImportCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="TTTech\Import\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="TTTech\Import\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">TTTechImport</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">TTTech\Import\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>
