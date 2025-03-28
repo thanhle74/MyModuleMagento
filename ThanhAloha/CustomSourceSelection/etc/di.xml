@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\InventorySourceSelectionApi\Model\GetSourceSelectionAlgorithmList">
+        <arguments>
+            <argument name="availableAlgorithms" xsi:type="array">
+                <item name="custom_source" xsi:type="array">
+                    <item xsi:type="string" name="code">custom_source</item>
+                    <item xsi:type="string" name="title" translatable="true">Custom Source</item>
+                    <item xsi:type="string" name="description" translatable="true">Algorithm which provides Source Selections based on predefined priority of Source</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\InventorySourceSelectionApi\Model\SourceSelectionService">
+        <arguments>
+            <argument name="sourceSelectionMethods" xsi:type="array">
+                <item name="custom_source"
+                      xsi:type="string">ThanhAloha\CustomSourceSelection\Model\Algorithms\PriorityBasedAlgorithm</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
